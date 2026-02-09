@@ -51,10 +51,10 @@ export function MobileNav() {
       {/* Slide-out panel */}
       <div
         className={cn(
-          "fixed right-0 top-0 z-40 h-full w-72 border-l border-white/5 p-6 pt-20 transition-transform duration-300 ease-out"
-        style={{ backgroundColor: "#0a0a0a" }},
+          "fixed right-0 top-0 z-40 h-full w-72 border-l border-white/5 p-6 pt-20 transition-transform duration-300 ease-out",
           open ? "translate-x-0" : "translate-x-full"
         )}
+        style={{ backgroundColor: "#0a0a0a" }}
       >
         <div className="flex flex-col gap-1">
           {navItems.map((item) => (
