@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
+import Image from "next/image"
 import { notFound } from "next/navigation"
 import { MDXRemote } from "next-mdx-remote/rsc"
 import { Badge } from "@/components/ui/badge"
@@ -72,13 +73,23 @@ export default function ProjectPage({ params }: ProjectPageProps) {
             </p>
           </header>
 
-          {/* Hero placeholder */}
-          <div className="aspect-video rounded-2xl border border-white/10 bg-gradient-to-br from-emerald-400/15 to-teal-300/10 mb-10 flex items-center justify-center">
-            <span className="text-6xl opacity-30">
-              {frontmatter.stage === "Seedling" && "🌱"}
-              {frontmatter.stage === "Blooming" && "🌸"}
-              {frontmatter.stage === "Harvest" && "🌾"}
-            </span>
+          {/* Hero image */}
+          <div className="aspect-video rounded-2xl border border-white/10 bg-gradient-to-br from-emerald-400/15 to-teal-300/10 mb-10 flex items-center justify-center overflow-hidden relative">
+            {frontmatter.hero_image ? (
+              <Image
+                src={frontmatter.hero_image}
+                alt={frontmatter.title}
+                fill
+                className="object-cover"
+                priority
+              />
+            ) : (
+              <span className="text-6xl opacity-30">
+                {frontmatter.stage === "Seedling" && "🌱"}
+                {frontmatter.stage === "Blooming" && "🌸"}
+                {frontmatter.stage === "Harvest" && "🌾"}
+              </span>
+            )}
           </div>
 
           {/* MDX body */}

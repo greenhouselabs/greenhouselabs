@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
+import Image from "next/image"
 import { Badge } from "@/components/ui/badge"
 import { MagneticCard } from "@/components/effects/magnetic-card"
 import { getAllProjects } from "@/lib/content"
@@ -72,10 +73,19 @@ export default function ProjectsPage() {
             className="group block"
           >
             <MagneticCard className="rounded-2xl border border-white/10 bg-neutral-900/40 p-5 hover:bg-neutral-900/60 transition-all h-full flex flex-col">
-              <div className="aspect-video rounded-xl border border-white/10 bg-gradient-to-br from-emerald-400/15 to-teal-300/10 group-hover:from-emerald-400/25 group-hover:to-teal-300/20 transition-all flex items-center justify-center">
-                <span className="text-4xl opacity-50">
-                  {stageEmoji(project.frontmatter.stage)}
-                </span>
+              <div className="aspect-video rounded-xl border border-white/10 bg-gradient-to-br from-emerald-400/15 to-teal-300/10 group-hover:from-emerald-400/25 group-hover:to-teal-300/20 transition-all flex items-center justify-center overflow-hidden relative">
+                {project.frontmatter.hero_image ? (
+                  <Image
+                    src={project.frontmatter.hero_image}
+                    alt={project.frontmatter.title}
+                    fill
+                    className="object-cover transition-transform group-hover:scale-105"
+                  />
+                ) : (
+                  <span className="text-4xl opacity-50">
+                    {stageEmoji(project.frontmatter.stage)}
+                  </span>
+                )}
               </div>
               <div className="mt-4 flex items-center justify-between">
                 <div>
