@@ -51,7 +51,7 @@ export default function ContactPage() {
                 <div>
                   <div className="font-medium">Email</div>
                   <div className="text-sm text-neutral-400">
-                    hello@greenhouselabs.com
+                    admin@greenhouselabs.io
                   </div>
                 </div>
               </div>

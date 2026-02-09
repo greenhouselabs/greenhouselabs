@@ -48,7 +48,7 @@ export function ContactForm() {
       }
     } catch {
       setMessage(
-        "error:Network error. Please try again or email us directly at hello@greenhouselabs.com"
+        "error:Network error. Please try again or email us directly at admin@greenhouselabs.io"
       )
     } finally {
       setLoading(false)
