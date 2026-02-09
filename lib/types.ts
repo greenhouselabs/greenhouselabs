@@ -19,6 +19,7 @@ export interface ProjectFrontmatter {
   updated_at: string
   featured: boolean
   featured_size?: "2x1" | "1x2" | "1x1"
+  sort_order?: number
   hero_image?: string
   icon_image?: string
   tech_stack: string[]

@@ -84,8 +84,7 @@ export function getAllProjects(): Project[] {
 
   return projects.sort(
     (a, b) =>
-      new Date(b.frontmatter.updated_at).getTime() -
-      new Date(a.frontmatter.updated_at).getTime()
+      (a.frontmatter.sort_order ?? 999) - (b.frontmatter.sort_order ?? 999)
   )
 }
 

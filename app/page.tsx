@@ -1,11 +1,11 @@
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ParticleCanvas } from "@/components/effects/particle-canvas"
 import { MagneticCard } from "@/components/effects/magnetic-card"
 import { NewsletterForm } from "@/components/newsletter-form"
-import { getAllPosts } from "@/lib/content"
 import { getFeaturedProjects } from "@/lib/content"
 
 const stages = [
@@ -28,7 +28,6 @@ const stages = [
 
 export default function Home() {
   const featuredProjects = getFeaturedProjects()
-  const recentPosts = getAllPosts().slice(0, 3)
 
   return (
     <div>
@@ -128,12 +127,21 @@ export default function Home() {
               className="group block"
             >
               <MagneticCard className="rounded-2xl border border-white/10 bg-neutral-900/40 p-5 hover:bg-neutral-900/60 transition-all">
-                <div className="aspect-video rounded-xl border border-white/10 bg-gradient-to-br from-emerald-400/15 to-teal-300/10 group-hover:from-emerald-400/25 group-hover:to-teal-300/20 transition-all flex items-center justify-center">
-                  <span className="text-4xl opacity-50">
-                    {project.frontmatter.stage === "Seedling" && "🌱"}
-                    {project.frontmatter.stage === "Blooming" && "🌸"}
-                    {project.frontmatter.stage === "Harvest" && "🌾"}
-                  </span>
+                <div className="aspect-video rounded-xl border border-white/10 bg-gradient-to-br from-emerald-400/15 to-teal-300/10 group-hover:from-emerald-400/25 group-hover:to-teal-300/20 transition-all flex items-center justify-center overflow-hidden relative">
+                  {project.frontmatter.hero_image ? (
+                    <Image
+                      src={project.frontmatter.hero_image}
+                      alt={project.frontmatter.title}
+                      fill
+                      className="object-cover transition-transform group-hover:scale-105"
+                    />
+                  ) : (
+                    <span className="text-4xl opacity-50">
+                      {project.frontmatter.stage === "Seedling" && "🌱"}
+                      {project.frontmatter.stage === "Blooming" && "🌸"}
+                      {project.frontmatter.stage === "Harvest" && "🌾"}
+                    </span>
+                  )}
                 </div>
                 <div className="mt-4 flex items-center justify-between">
                   <div>
@@ -162,52 +170,6 @@ export default function Home() {
                   {project.frontmatter.blurb}
                 </p>
               </MagneticCard>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      {/* BLOG PREVIEW */}
-      <section className="animate-on-scroll mx-auto max-w-7xl px-6 pb-24">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <h2 className="text-3xl font-semibold sm:text-4xl">
-              From the Lab Journal
-            </h2>
-            <p className="mt-2 text-neutral-300">
-              Build notes, research, and ideas to help your own projects grow.
-            </p>
-          </div>
-          <Button
-            variant="outline"
-            className="rounded-xl border-white/10 hover:bg-white/10 w-full sm:w-auto"
-            asChild
-          >
-            <Link href="/blog">Read all</Link>
-          </Button>
-        </div>
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {recentPosts.map((post) => (
-            <Link
-              key={post.frontmatter.slug}
-              href={`/blog/${post.frontmatter.slug}`}
-              className="group block"
-            >
-              <div className="rounded-2xl border border-white/10 bg-neutral-900/40 p-5 hover:bg-neutral-900/60 transition-colors">
-                <div className="aspect-[16/10] rounded-xl border border-white/10 bg-gradient-to-br from-emerald-400/15 to-teal-300/10 group-hover:from-emerald-400/25 group-hover:to-teal-300/20 transition-all" />
-                <h3 className="mt-4 text-lg font-semibold group-hover:text-emerald-300 transition-colors">
-                  {post.frontmatter.title}
-                </h3>
-                <p className="mt-1 text-sm text-neutral-400">
-                  {post.frontmatter.excerpt}
-                </p>
-                <div className="mt-3 flex items-center justify-between text-sm">
-                  <span className="text-neutral-500">{post.readingTime}</span>
-                  <span className="text-emerald-300 font-medium group-hover:underline">
-                    Read &rarr;
-                  </span>
-                </div>
-              </div>
             </Link>
           ))}
         </div>
