@@ -1,0 +1,146 @@
+---
+title: "Building AI tools that users actually want"
+slug: "building-ai-tools-users-want"
+date: "2024-01-20"
+excerpt: "Lessons learned from launching 6 AI products in 12 months and what separates successful AI tools from the ones gathering digital dust."
+author: "Greenhouse Labs"
+categories: ["AI", "Product Development", "Lessons Learned"]
+featured_image: "/images/blog/ai-tools-hero.jpg"
+published: true
+---
+
+After launching six AI-powered tools in the past year—from Privy AI's privacy policy analyzer to our upcoming SwingSauce golf trainer—we've learned that building AI tools users actually want requires a fundamentally different approach than traditional software development.
+
+Here's what we wish we'd known when we started.
+
+## The AI Tool Paradox
+
+The biggest challenge with AI tools isn't the AI—it's everything else. We've seen countless technically impressive AI demos that nobody uses because they:
+
+- Solve problems people didn't know they had
+- Require too much setup or learning
+- Produce outputs that need extensive editing
+- Feel like magic tricks instead of practical tools
+
+The most successful AI tools we've built feel less like "AI" and more like superpowers.
+
+## Lesson 1: Start with the Job, Not the Technology
+
+### What We Used to Do
+"We have access to GPT-4, what could we build with it?"
+
+### What We Do Now
+"What job are people struggling to do that AI could help with?"
+
+**Privy AI Example:** Instead of "let's build a document analyzer," we started with "people spend hours reading privacy policies they'll never understand—how can AI make this instant and clear?"
+
+The result? 94% user satisfaction because we solved a real pain point, not just showcased AI capabilities.
+
+## Lesson 2: The Output Is Only Half the Product
+
+Great AI tools aren't just about generating good outputs—they're about making those outputs immediately useful.
+
+### Bad AI Tool Flow:
+1. User inputs data
+2. AI processes and returns raw output
+3. User figures out what to do with it
+
+### Good AI Tool Flow:
+1. User inputs data
+2. AI processes and returns structured, actionable output
+3. User can immediately use or export the result
+
+**NDI Audio Recorder Example:** We don't just capture audio streams—we provide frame-accurate timestamps, multiple export formats, and real-time monitoring so broadcast professionals can drop our output directly into their workflows.
+
+## Lesson 3: Embrace Constraints, Don't Fight Them
+
+Every AI model has limitations. Instead of trying to hide them, we design around them:
+
+### API Rate Limits
+Instead of queuing requests, we show progress and set expectations upfront.
+
+### Context Windows
+Rather than trying to process entire documents, we chunk intelligently and show our reasoning.
+
+### Accuracy Boundaries
+We're explicit about confidence levels and what our tools can't do.
+
+**SwingSauce Example:** Golf swing analysis will never be 100% accurate from phone cameras. Instead of hiding this, we focus on trends and improvements over time, which golfers find more valuable than perfect shot-by-shot analysis.
+
+## Lesson 4: Speed Matters More Than Perfect Accuracy
+
+Users prefer a tool that's 85% accurate in 30 seconds over one that's 95% accurate in 5 minutes.
+
+We've learned to:
+- Optimize for time-to-value over perfect results
+- Show partial results as they're generated
+- Allow users to refine outputs rather than regenerate from scratch
+
+## Lesson 5: The Interface Is the Product
+
+AI tools live or die by their interfaces. The best AI in the world is useless if users can't figure out how to use it.
+
+### Our Interface Principles:
+
+**Progressive Disclosure:** Start simple, reveal complexity as needed
+**Immediate Feedback:** Show something happening within 2 seconds
+**Multiple Entry Points:** Support copy/paste, file upload, and direct input
+**Export Everything:** Users want their data in their preferred format
+
+## What Actually Makes AI Tools Successful
+
+After analyzing our hits and misses, successful AI tools share these characteristics:
+
+### 1. They Replace, Don't Augment
+Good AI tools completely replace a tedious task. They don't just "help" with it.
+
+### 2. They Work with Existing Workflows
+People won't change their entire process for your tool. Your tool needs to fit into their existing process.
+
+### 3. They Have Clear Success Metrics
+Users need to know if the AI did a good job. Vague outputs kill adoption.
+
+### 4. They Get Better with Use
+Whether through fine-tuning, better prompts, or user feedback, the tool should improve over time.
+
+## The Tools That Didn't Make It
+
+Not all our experiments succeeded. Here's what we learned from the failures:
+
+**Social Media Content Generator:** Too generic. Everyone's brand voice is different, and our output felt robotic.
+
+**Code Review Assistant:** Too opinionated. Developers want suggestions, not mandates.
+
+**Email Response Helper:** Too context-dependent. Professional email requires nuance our AI couldn't capture.
+
+The pattern? These tools tried to replace human judgment instead of human effort.
+
+## Building Your Own AI Tool: A Checklist
+
+Before you start building, ask:
+
+- [ ] Does this solve a problem people actively complain about?
+- [ ] Can you build a working prototype in under a week?
+- [ ] Will the output be immediately usable without editing?
+- [ ] Does it fit into existing workflows?
+- [ ] Can you measure success objectively?
+- [ ] Would you use this tool weekly if someone else built it?
+
+If you can't answer "yes" to all of these, reconsider the approach.
+
+## What's Next
+
+AI tooling is still in its infancy. The biggest opportunities are in industries where:
+
+- Manual processes haven't been automated yet
+- Domain expertise is expensive and scarce
+- Data exists but insights don't
+- Repetitive tasks dominate valuable work
+
+We're continuing to explore these areas through our incubator program, working with partners who understand their industries better than we ever could.
+
+The future belongs to AI tools that feel inevitable once you use them—tools where people say "of course this exists" rather than "wow, this is impressive."
+
+---
+
+*Interested in collaborating on an AI tool for your industry? [Get in touch](/contact)—we're always looking for domain experts who want to explore what's possible.*

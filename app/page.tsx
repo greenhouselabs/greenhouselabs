@@ -1,101 +1,232 @@
-import Image from "next/image";
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { ParticleCanvas } from "@/components/effects/particle-canvas"
+import { MagneticCard } from "@/components/effects/magnetic-card"
+import { NewsletterForm } from "@/components/newsletter-form"
+import { getAllPosts } from "@/lib/content"
+import { getFeaturedProjects } from "@/lib/content"
+
+const stages = [
+  {
+    title: "Seedlings",
+    description: "Sketches, prompts, proofs-of-concept ready to sprout.",
+    icon: "🌱",
+  },
+  {
+    title: "Blooming",
+    description: "Active builds with dev logs, roadmaps, and opt-in betas.",
+    icon: "🌸",
+  },
+  {
+    title: "Harvest",
+    description: "Launched apps, downloadable tools, and commercial licenses.",
+    icon: "🌾",
+  },
+]
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const featuredProjects = getFeaturedProjects()
+  const recentPosts = getAllPosts().slice(0, 3)
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  return (
+    <div>
+      {/* HERO */}
+      <header className="relative mx-auto max-w-7xl px-6 pb-24 pt-16 lg:pt-24">
+        {/* Particle network background */}
+        <div className="absolute inset-0 -z-10 overflow-hidden">
+          <ParticleCanvas />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        <div className="relative mx-auto max-w-3xl text-center space-y-6">
+          <h1 className="text-4xl font-semibold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
+            Where{" "}
+            <span className="gradient-text shimmer-text bg-gradient-to-r from-emerald-300 via-teal-200 to-emerald-300">
+              Generative AI
+            </span>{" "}
+            projects grow
+          </h1>
+          <p className="mx-auto max-w-xl text-lg text-neutral-300 sm:text-xl">
+            A portfolio and incubator — Greenhouse Labs is the nursery for ideas
+            that bloom into real AI products, content, and tools.
+          </p>
+          <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <Button
+              size="lg"
+              className="rounded-xl bg-emerald-500 text-neutral-900 hover:bg-emerald-400 font-semibold w-full sm:w-auto"
+              asChild
+            >
+              <Link href="/contact">Start Growing</Link>
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="rounded-xl border-white/10 hover:bg-white/10 w-full sm:w-auto"
+              asChild
+            >
+              <Link href="/projects">Explore Projects</Link>
+            </Button>
+          </div>
+        </div>
+      </header>
+
+      {/* INCUBATOR STAGES */}
+      <section className="animate-on-scroll mx-auto max-w-7xl px-6 pb-24">
+        <div className="mx-auto max-w-2xl text-center space-y-4">
+          <h2 className="text-3xl font-semibold sm:text-4xl">
+            Incubator &amp; Nursery
+          </h2>
+          <p className="text-neutral-300 text-lg">
+            From seed ideas to thriving releases — track growth stages and get
+            early access.
+          </p>
+        </div>
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {stages.map((stage) => (
+            <Card
+              key={stage.title}
+              className="rounded-2xl border-white/10 bg-neutral-900/40 hover:bg-neutral-900/60 transition-colors group"
+            >
+              <CardContent className="p-6">
+                <div className="mb-3 text-3xl">{stage.icon}</div>
+                <h3 className="text-xl font-semibold group-hover:text-emerald-300 transition-colors">
+                  {stage.title}
+                </h3>
+                <p className="mt-2 text-sm text-neutral-300">
+                  {stage.description}
+                </p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      {/* FEATURED PROJECTS */}
+      <section className="animate-on-scroll mx-auto max-w-7xl px-6 pb-24">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <h2 className="text-3xl font-semibold sm:text-4xl">
+              Featured Projects
+            </h2>
+            <p className="mt-2 text-neutral-300">
+              A mix of research experiments and production-ready tools.
+            </p>
+          </div>
+          <Button
+            variant="outline"
+            className="rounded-xl border-white/10 hover:bg-white/10 w-full sm:w-auto"
+            asChild
+          >
+            <Link href="/projects">View all</Link>
+          </Button>
+        </div>
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {featuredProjects.map((project) => (
+            <Link
+              key={project.frontmatter.slug}
+              href={`/projects/${project.frontmatter.slug}`}
+              className="group block"
+            >
+              <MagneticCard className="rounded-2xl border border-white/10 bg-neutral-900/40 p-5 hover:bg-neutral-900/60 transition-all">
+                <div className="aspect-video rounded-xl border border-white/10 bg-gradient-to-br from-emerald-400/15 to-teal-300/10 group-hover:from-emerald-400/25 group-hover:to-teal-300/20 transition-all flex items-center justify-center">
+                  <span className="text-4xl opacity-50">
+                    {project.frontmatter.stage === "Seedling" && "🌱"}
+                    {project.frontmatter.stage === "Blooming" && "🌸"}
+                    {project.frontmatter.stage === "Harvest" && "🌾"}
+                  </span>
+                </div>
+                <div className="mt-4 flex items-center justify-between">
+                  <div>
+                    <h3 className="font-semibold group-hover:text-emerald-300 transition-colors">
+                      {project.frontmatter.title}
+                    </h3>
+                    <p className="text-sm text-neutral-400">
+                      {project.frontmatter.stage} &middot;{" "}
+                      {project.frontmatter.category}
+                    </p>
+                  </div>
+                  <Badge
+                    variant="outline"
+                    className={
+                      project.frontmatter.stage === "Seedling"
+                        ? "border-amber-500/50 text-amber-400"
+                        : project.frontmatter.stage === "Blooming"
+                          ? "border-emerald-500/50 text-emerald-400"
+                          : "border-blue-500/50 text-blue-400"
+                    }
+                  >
+                    {project.frontmatter.stage}
+                  </Badge>
+                </div>
+                <p className="mt-2 text-sm text-neutral-400 line-clamp-2">
+                  {project.frontmatter.blurb}
+                </p>
+              </MagneticCard>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* BLOG PREVIEW */}
+      <section className="animate-on-scroll mx-auto max-w-7xl px-6 pb-24">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <h2 className="text-3xl font-semibold sm:text-4xl">
+              From the Lab Journal
+            </h2>
+            <p className="mt-2 text-neutral-300">
+              Build notes, research, and ideas to help your own projects grow.
+            </p>
+          </div>
+          <Button
+            variant="outline"
+            className="rounded-xl border-white/10 hover:bg-white/10 w-full sm:w-auto"
+            asChild
+          >
+            <Link href="/blog">Read all</Link>
+          </Button>
+        </div>
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {recentPosts.map((post) => (
+            <Link
+              key={post.frontmatter.slug}
+              href={`/blog/${post.frontmatter.slug}`}
+              className="group block"
+            >
+              <div className="rounded-2xl border border-white/10 bg-neutral-900/40 p-5 hover:bg-neutral-900/60 transition-colors">
+                <div className="aspect-[16/10] rounded-xl border border-white/10 bg-gradient-to-br from-emerald-400/15 to-teal-300/10 group-hover:from-emerald-400/25 group-hover:to-teal-300/20 transition-all" />
+                <h3 className="mt-4 text-lg font-semibold group-hover:text-emerald-300 transition-colors">
+                  {post.frontmatter.title}
+                </h3>
+                <p className="mt-1 text-sm text-neutral-400">
+                  {post.frontmatter.excerpt}
+                </p>
+                <div className="mt-3 flex items-center justify-between text-sm">
+                  <span className="text-neutral-500">{post.readingTime}</span>
+                  <span className="text-emerald-300 font-medium group-hover:underline">
+                    Read &rarr;
+                  </span>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* NEWSLETTER */}
+      <section className="animate-on-scroll mx-auto max-w-4xl px-6 pb-24 text-center">
+        <div className="space-y-4">
+          <h2 className="text-3xl font-semibold sm:text-4xl">
+            Join the Greenhouse
+          </h2>
+          <p className="text-neutral-300 text-lg">
+            Get early builds, drop alerts, and behind-the-scenes dev logs.
+          </p>
+        </div>
+        <div className="mt-6">
+          <NewsletterForm />
+        </div>
+      </section>
     </div>
-  );
+  )
 }

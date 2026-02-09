@@ -1,0 +1,112 @@
+---
+title: "How we ship Seedlings faster"
+slug: "shipping-seedlings-faster"
+date: "2024-01-15"
+excerpt: "A process for turning sparks into shippable prototypes without burning time."
+author: "Greenhouse Labs"
+categories: ["Process", "Development", "Productivity"]
+featured_image: "/images/blog/seedlings-hero.jpg"
+published: true
+---
+
+At Greenhouse Labs, we've learned that the fastest path from idea to user feedback isn't always the most obvious one. After launching six AI projects in the past year, we've refined our "Seedling" process to consistently ship working prototypes in days, not weeks.
+
+## The Problem with Traditional Development
+
+Most development processes are optimized for shipping production-ready software. But when you're validating a new AI concept, production-ready is often premature optimization. You need something that:
+
+- Works well enough to gather real user feedback
+- Can be built quickly with minimal resources
+- Allows for rapid iteration based on learnings
+- Doesn't accumulate technical debt that slows future development
+
+## Our Seedling Framework
+
+### 1. Define the Core Experience (Day 1)
+
+Before writing any code, we spend exactly one day defining:
+
+- **The one thing** this tool does better than anything else
+- **The happy path** user journey (no edge cases)
+- **Success metrics** that matter (usually time saved or accuracy gained)
+- **Technical constraints** (API limits, performance requirements, etc.)
+
+For example, with Privy AI, our core experience was "Upload a privacy policy, get a plain English summary in under 30 seconds."
+
+### 2. Build the Thinnest Possible MVP (Days 2-4)
+
+We ruthlessly cut features to ship something working within 72 hours:
+
+**What goes in:**
+- Core functionality only
+- Basic but clean UI
+- Minimal error handling
+- Simple deployment (usually Vercel)
+
+**What gets cut:**
+- User accounts (unless absolutely necessary)
+- Advanced features
+- Complex error scenarios
+- Performance optimizations
+- Comprehensive testing
+
+### 3. Get it in Front of Users (Day 5)
+
+The prototype goes live immediately, usually with:
+- A simple landing page explaining what it does
+- Clear expectations about its prototype status
+- Easy feedback mechanisms (TypeForm, Discord, or email)
+- Basic analytics to track usage patterns
+
+## Real Examples
+
+### Privy AI: Privacy Policy Analyzer
+
+**Week 1:** Core GPT-4 integration with simple file upload
+**Week 2:** Added risk scoring and visual improvements
+**Week 3:** Bulk analysis and export features
+**Result:** 200+ users in first month, 94% satisfaction
+
+### NDI Audio Recorder: Broadcast Tool
+
+**Week 1:** Basic NDI stream detection and recording
+**Week 2:** Real-time monitoring and export formats
+**Week 3:** Multi-channel support and UI polish
+**Result:** 150+ professional studios adopted it
+
+## The Key Insights
+
+After dozens of seedlings, we've noticed patterns:
+
+**Speed beats perfection** - Users prefer a working tool with limitations over waiting for a comprehensive solution.
+
+**Feedback shapes everything** - Real user input is worth 10x more than internal assumptions.
+
+**Technical debt isn't always debt** - If the concept fails, perfect code doesn't matter. If it succeeds, rebuilding is often faster than refactoring.
+
+## Common Pitfalls to Avoid
+
+1. **Feature creep during development** - Stay disciplined about the scope
+2. **Over-engineering the prototype** - Remember, this might get thrown away
+3. **Waiting for perfect market fit** - Ship to learn, don't learn to ship
+4. **Ignoring feedback loops** - Build analytics and feedback collection from day one
+
+## Tools That Make This Possible
+
+Our speed comes from having the right tools ready:
+
+- **Next.js + Vercel** for instant deployment
+- **Supabase** for quick database + auth
+- **OpenAI APIs** for AI capabilities
+- **TailwindCSS + shadcn/ui** for rapid UI development
+- **PostHog** for instant analytics
+
+## What's Next?
+
+The seedling process isn't just about shipping fast—it's about learning fast. Most of our seedlings evolve into our Blooming projects, where we rebuild with production-grade architecture based on what we learned.
+
+Some seedlings die, and that's perfectly fine. Better to kill a bad idea after one week than after one year.
+
+---
+
+*Want to see our seedling process in action? Check out our [current projects](/projects) or [reach out](/contact) if you'd like to collaborate on bringing your AI idea to life.*

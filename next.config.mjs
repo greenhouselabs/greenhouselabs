@@ -1,4 +1,7 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  // Enable MDX file imports if needed in the future
+  pageExtensions: ["ts", "tsx", "mdx"],
+}
 
-export default nextConfig;
+export default nextConfig
