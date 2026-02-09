@@ -33,7 +33,7 @@ export function MobileNav() {
     <div className="md:hidden">
       <button
         onClick={() => setOpen(!open)}
-        className="relative z-50 rounded-lg p-2 text-neutral-400 transition-colors hover:text-white"
+        className="relative z-[65] rounded-lg p-2 text-neutral-400 transition-colors hover:text-white"
         aria-label={open ? "Close menu" : "Open menu"}
       >
         {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -42,7 +42,7 @@ export function MobileNav() {
       {/* Backdrop */}
       <div
         className={cn(
-          "fixed inset-0 z-40 bg-black/60 backdrop-blur-sm transition-opacity duration-300",
+          "fixed inset-0 z-[55] bg-black/60 backdrop-blur-sm transition-opacity duration-300",
           open ? "opacity-100" : "pointer-events-none opacity-0"
         )}
         onClick={() => setOpen(false)}
@@ -51,7 +51,7 @@ export function MobileNav() {
       {/* Slide-out panel */}
       <div
         className={cn(
-          "fixed right-0 top-0 z-40 h-full w-72 border-l border-white/5 p-6 pt-20 transition-transform duration-300 ease-out",
+          "fixed right-0 top-0 z-[60] h-full w-72 border-l border-white/5 p-6 pt-20 transition-transform duration-300 ease-out",
           open ? "translate-x-0" : "translate-x-full"
         )}
         style={{ backgroundColor: "#0a0a0a" }}
