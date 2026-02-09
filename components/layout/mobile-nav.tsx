@@ -51,7 +51,8 @@ export function MobileNav() {
       {/* Slide-out panel */}
       <div
         className={cn(
-          "fixed right-0 top-0 z-40 h-full w-72 border-l border-white/5 bg-neutral-950 p-6 pt-20 transition-transform duration-300 ease-out",
+          "fixed right-0 top-0 z-40 h-full w-72 border-l border-white/5 p-6 pt-20 transition-transform duration-300 ease-out"
+        style={{ backgroundColor: "#0a0a0a" }},
           open ? "translate-x-0" : "translate-x-full"
         )}
       >
