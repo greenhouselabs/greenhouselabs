@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server"
 
+const SHEETS_WEBHOOK_URL = process.env.GOOGLE_SHEETS_WEBHOOK_URL
+
 export async function POST(request: Request) {
   try {
     const body = await request.json()
@@ -22,36 +24,26 @@ export async function POST(request: Request) {
       )
     }
 
-    // --- Resend integration ---
-    // Activate by setting RESEND_API_KEY and CONTACT_EMAIL in .env.local
-    const resendKey = process.env.RESEND_API_KEY
-    const contactEmail = process.env.CONTACT_EMAIL
-
-    if (resendKey && contactEmail) {
-      const { Resend } = await import("resend")
-      const resend = new Resend(resendKey)
-
-      await resend.emails.send({
-        from: "Greenhouse Labs <noreply@greenhouselabs.com>",
-        to: [contactEmail],
-        reply_to: email,
-        subject: `New project inquiry from ${name}`,
-        html: `
-          <h2>New Project Inquiry</h2>
-          <p><strong>Name:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Company:</strong> ${body.company || "N/A"}</p>
-          <p><strong>Project Type:</strong> ${projectType}</p>
-          <p><strong>Budget:</strong> ${body.budget || "N/A"}</p>
-          <p><strong>Timeline:</strong> ${body.timeline || "N/A"}</p>
-          <hr />
-          <p><strong>Description:</strong></p>
-          <p>${description.replace(/\n/g, "<br />")}</p>
-        `,
+    if (SHEETS_WEBHOOK_URL) {
+      const response = await fetch(SHEETS_WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          email,
+          company: body.company || "",
+          projectType,
+          budget: body.budget || "",
+          timeline: body.timeline || "",
+          description,
+        }),
       })
+
+      if (!response.ok) {
+        throw new Error(`Sheets webhook error: ${response.status}`)
+      }
     } else {
-      // No API key — log to console for development
-      console.log("Contact form submission (Resend not configured):", {
+      console.log("Contact form submission (Sheets not configured):", {
         name,
         email,
         projectType,
