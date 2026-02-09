@@ -25,9 +25,9 @@ export async function POST(request: Request) {
     }
 
     if (SHEETS_WEBHOOK_URL) {
-      const response = await fetch(SHEETS_WEBHOOK_URL, {
+      await fetch(SHEETS_WEBHOOK_URL, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "text/plain" },
         body: JSON.stringify({
           name,
           email,
@@ -37,11 +37,8 @@ export async function POST(request: Request) {
           timeline: body.timeline || "",
           description,
         }),
+        redirect: "follow",
       })
-
-      if (!response.ok) {
-        throw new Error(`Sheets webhook error: ${response.status}`)
-      }
     } else {
       console.log("Contact form submission (Sheets not configured):", {
         name,
