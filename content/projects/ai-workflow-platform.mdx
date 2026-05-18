@@ -1,0 +1,61 @@
+---
+title: "AI Workflow Platform"
+slug: "ai-workflow-platform"
+stage: "Harvest"
+category: "AI Platforms & Internal Tools"
+blurb: "A nine-module internal AI workflow platform — built, deployed, secured, and operated end-to-end as the sole engineer."
+tags: ["AI Platform", "RAG", "Full-Stack", "Google Cloud", "TypeScript"]
+updated_at: "2026-04-07"
+sort_order: 2
+featured: true
+featured_size: "2x1"
+hero_image: "/images/projects/aiworkflowplatform-project.png"
+icon_image: ""
+tech_stack: ["Next.js 16", "React 19", "TypeScript", "Express", "PostgreSQL", "pgvector", "Prisma", "Firebase Auth", "Google Cloud Run", "Cloud Tasks", "Gemini", "Upstash Redis"]
+results:
+  - metric: "Production Modules"
+    value: "9"
+  - metric: "Automated Tests"
+    value: "1,955"
+  - metric: "Build Duration"
+    value: "5 months"
+---
+
+A unified internal AI workflow platform built as the sole engineer over roughly five months — designed, built, deployed, secured, and operated end-to-end across frontend, backend, database, infrastructure, AI pipelines, integrations, and incident response. It replaces a sprawling set of one-off scripts and manual processes for a creative agency working in live events, esports, music festivals, and sports broadcast, serving the entire company — finance, producers, account managers, sales, and design — from a shared identity layer, a shared data layer, and a shared AI runtime.
+
+The platform is a TypeScript monorepo: a Next.js 16 / React 19 frontend, an Express backend, four shared packages, and an internal docs tool. It runs on Google Cloud Run with Cloud Tasks for background work, Cloud SQL Postgres with pgvector for retrieval, Firebase for identity, and Cloud Build for deployment. Every protected route is authenticated and Zod-validated, and every retrieval query is permission-filtered at the SQL layer.
+
+## What it does
+
+- **Agentic RAG assistant** — A production assistant over the company's document corpus, combining retrieval-augmented generation, persistent user memory, multi-turn conversation, bounded tool use, web search grounding, and prompt-injection defense
+- **Proposal workflow engine** — A multi-stage pipeline that takes an RFP from intake through draft, rating, brief, budget, whitepaper, contract, and presentation, each stage backed by an async task handler producing real Google Workspace artifacts
+- **Client-side PII sanitizer** — Detects 16 PII types across five categories with zero server roundtrip; text never leaves the browser
+- **Finance dashboard & reporting engine** — A role-gated dashboard and 10-report-type generation engine that reads from three independent data sources, degrading gracefully when any source fails
+- **Client intelligence & lead generation suite** — A multi-source news pipeline with a three-provider fallback chain and AI scoring that surfaces pitch opportunities, client risk, and competitive intelligence across per-vertical channels
+- **Workforce operations module** — People directory, weekly capacity heatmap, project planning, and an AI image-generation pipeline for trading-style cards
+- **Social drafting & publishing workspace** — End-to-end LinkedIn OAuth, media upload, and live post publishing
+- **Time tracking & calendar** — Time tracking with Google Calendar integration and a Slack bot that logs time with relative date parsing
+- **Customizable widget dashboard** — A drag-and-drop, resizable dashboard with 24 widgets spanning every module, with backend-persisted layouts
+
+## Engineering highlights
+
+- **RAG with permission filtering at the SQL layer** — Every corpus query filters by reader permissions *before* vector similarity, never in application code, so retrieval can't leak documents a user can't see
+- **SSE ticket-exchange auth** — Browser `EventSource` can't send headers and JWTs in URLs leak into logs; an opaque short-lived ticket flow solves real-time auth cleanly and became the platform standard
+- **Embedding provider migration with zero re-indexing** — Swapped the embedding stack to Gemini while preserving the existing 1536-dimension vector contract — no re-embedding, no schema migration, no downtime
+- **Distributed rate limiting** — Moved rate limits off per-instance memory to Upstash Redis so limits hold correctly across Cloud Run instances
+- **Multi-wave security audit** — A platform-wide pass covering SSRF, RBAC, OAuth state replay, prompt injection, race conditions, and CVE elimination, backed by 32 dedicated security control tests
+- **Production incident response** — Diagnosed and resolved a P0 incident: a three-bug compound failure where a misconfigured rate limiter had been silently dropping background-task dispatches for months. Fixed the root cause, shipped same-day, and authored a full postmortem with a diagnostic runbook
+
+## Screenshots
+
+![AI Workflow Platform — customizable widget dashboard](/images/projects/aiworkflowplatform-1.png)
+
+![AI Workflow Platform — agentic assistant](/images/projects/aiworkflowplatform-2.png)
+
+![AI Workflow Platform — proposal workflow engine](/images/projects/aiworkflowplatform-3.png)
+
+![AI Workflow Platform — finance dashboard](/images/projects/aiworkflowplatform-4.png)
+
+## Why it matters
+
+This is a complete production system owned at every layer — requirements, schema design, backend, frontend, infrastructure, deployment, security, observability, and incident response — shipped solo with 475 commits and 1,955 passing tests across dedicated suites. It demonstrates not just building features, but running a real platform: evidence-based debugging, root-cause fixes over symptom patches, and turning incidents into permanent runbook and observability upgrades.
