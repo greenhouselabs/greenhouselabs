@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
+import Image from "next/image"
 import { Badge } from "@/components/ui/badge"
 import { getAllPosts } from "@/lib/content"
 import { formatDate } from "@/lib/utils"
@@ -8,6 +9,15 @@ export const metadata: Metadata = {
   title: "Blog",
   description:
     "Build notes, research, and ideas from Greenhouse Labs to help your own projects grow.",
+  alternates: {
+    canonical: "/blog",
+  },
+  openGraph: {
+    title: "Blog | Greenhouse Labs",
+    description:
+      "Build notes, research, and ideas from Greenhouse Labs to help your own projects grow.",
+    url: "/blog",
+  },
 }
 
 export default function BlogPage() {
@@ -32,7 +42,18 @@ export default function BlogPage() {
             className="group block"
           >
             <article className="rounded-2xl border border-white/10 bg-neutral-900/40 p-5 hover:bg-neutral-900/60 transition-colors h-full flex flex-col">
-              <div className="aspect-[16/10] rounded-xl border border-white/10 bg-gradient-to-br from-emerald-400/15 to-teal-300/10 group-hover:from-emerald-400/25 group-hover:to-teal-300/20 transition-all" />
+              <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-white/10 bg-neutral-900">
+                {post.frontmatter.featured_image ? (
+                  <Image
+                    src={post.frontmatter.featured_image}
+                    alt=""
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                ) : (
+                  <div className="h-full bg-gradient-to-br from-emerald-400/15 to-teal-300/10 group-hover:from-emerald-400/25 group-hover:to-teal-300/20 transition-all" />
+                )}
+              </div>
               <h2 className="mt-4 text-lg font-semibold group-hover:text-emerald-300 transition-colors">
                 {post.frontmatter.title}
               </h2>

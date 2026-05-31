@@ -5,7 +5,7 @@ import { notFound } from "next/navigation"
 import { MDXRemote } from "next-mdx-remote/rsc"
 import { Badge } from "@/components/ui/badge"
 import { getProjectBySlug, getProjectSlugs } from "@/lib/content"
-import { ExternalLink, Github, BookOpen } from "lucide-react"
+import { ArrowRight, BookOpen, CreditCard, ExternalLink, Github, MonitorPlay } from "lucide-react"
 
 interface ProjectPageProps {
   params: { slug: string }
@@ -22,6 +22,25 @@ export function generateMetadata({ params }: ProjectPageProps): Metadata {
   return {
     title: project.frontmatter.title,
     description: project.frontmatter.blurb,
+    alternates: {
+      canonical: `/projects/${project.frontmatter.slug}`,
+    },
+    openGraph: {
+      title: project.frontmatter.title,
+      description: project.frontmatter.blurb,
+      url: `/projects/${project.frontmatter.slug}`,
+      type: "article",
+      modifiedTime: project.frontmatter.updated_at,
+      tags: project.frontmatter.tags,
+      images: project.frontmatter.hero_image
+        ? [
+            {
+              url: project.frontmatter.hero_image,
+              alt: project.frontmatter.title,
+            },
+          ]
+        : undefined,
+    },
   }
 }
 
@@ -38,12 +57,18 @@ function stageBadgeClasses(stage: string) {
   }
 }
 
+function isExternalUrl(href: string) {
+  return href.startsWith("http://") || href.startsWith("https://")
+}
+
 export default function ProjectPage({ params }: ProjectPageProps) {
   const project = getProjectBySlug(params.slug)
   if (!project) notFound()
 
   const { frontmatter, content } = project
   const links = frontmatter.links || {}
+  const offer = frontmatter.offer
+  const offerHref = offer?.href || links.purchase || links.demo || links.live || "/contact"
 
   return (
     <div className="mx-auto max-w-7xl px-6 py-12">
@@ -101,10 +126,32 @@ export default function ProjectPage({ params }: ProjectPageProps) {
         {/* Sidebar — 1/3 */}
         <aside className="space-y-6">
           {/* Links */}
-          {(links.live || links.repo || links.doc) && (
+          {(links.live || links.repo || links.doc || links.purchase || links.demo) && (
             <div className="rounded-xl border border-white/10 bg-neutral-900/40 p-5">
               <h3 className="font-semibold mb-3">Links</h3>
               <div className="space-y-2">
+                {links.purchase && (
+                  <a
+                    href={links.purchase}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-sm text-neutral-300 hover:text-emerald-300 transition-colors"
+                  >
+                    <CreditCard className="h-4 w-4" />
+                    Purchase
+                  </a>
+                )}
+                {links.demo && (
+                  <a
+                    href={links.demo}
+                    target={isExternalUrl(links.demo) ? "_blank" : undefined}
+                    rel={isExternalUrl(links.demo) ? "noopener noreferrer" : undefined}
+                    className="flex items-center gap-2 text-sm text-neutral-300 hover:text-emerald-300 transition-colors"
+                  >
+                    <MonitorPlay className="h-4 w-4" />
+                    Demo
+                  </a>
+                )}
                 {links.live && (
                   <a
                     href={links.live}
@@ -194,14 +241,27 @@ export default function ProjectPage({ params }: ProjectPageProps) {
           {/* CTA */}
           <div className="rounded-xl border border-emerald-500/20 bg-emerald-950/20 p-5 text-center">
             <p className="text-sm text-neutral-300 mb-3">
-              Interested in a similar project?
+              {offer ? offer.status : "Interested in a similar project?"}
             </p>
-            <Link
-              href="/contact"
-              className="inline-block rounded-xl bg-emerald-500 px-5 py-2.5 text-sm font-semibold text-neutral-900 hover:bg-emerald-400 transition-colors"
-            >
-              Get in Touch
-            </Link>
+            {isExternalUrl(offerHref) ? (
+              <a
+                href={offerHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-lg bg-emerald-500 px-5 py-2.5 text-sm font-semibold text-neutral-900 hover:bg-emerald-400 transition-colors"
+              >
+                {offer?.cta || "Get in Touch"}
+                <ExternalLink className="h-4 w-4" />
+              </a>
+            ) : (
+              <Link
+                href={offerHref}
+                className="inline-flex items-center gap-2 rounded-lg bg-emerald-500 px-5 py-2.5 text-sm font-semibold text-neutral-900 hover:bg-emerald-400 transition-colors"
+              >
+                {offer?.cta || "Get in Touch"}
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            )}
           </div>
         </aside>
       </div>

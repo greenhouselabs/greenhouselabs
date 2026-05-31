@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 
 export function NewsletterForm() {
   const [email, setEmail] = useState("")
+  const [website, setWebsite] = useState("")
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState("")
 
@@ -17,7 +18,7 @@ export function NewsletterForm() {
       const response = await fetch("/api/newsletter", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, website }),
       })
 
       const data = await response.json()
@@ -25,6 +26,7 @@ export function NewsletterForm() {
       if (response.ok) {
         setMessage("success:" + data.message)
         setEmail("")
+        setWebsite("")
       } else {
         setMessage("error:" + (data.error || "Something went wrong."))
       }
@@ -44,6 +46,16 @@ export function NewsletterForm() {
         onSubmit={handleSubmit}
         className="mx-auto flex max-w-md flex-col gap-2 sm:flex-row"
       >
+        <div className="hidden" aria-hidden="true">
+          <label htmlFor="newsletter-website">Website</label>
+          <input
+            id="newsletter-website"
+            value={website}
+            onChange={(e) => setWebsite(e.target.value)}
+            tabIndex={-1}
+            autoComplete="off"
+          />
+        </div>
         <input
           type="email"
           value={email}

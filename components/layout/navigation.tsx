@@ -6,7 +6,10 @@ import { cn } from "@/lib/utils"
 import { MobileNav } from "./mobile-nav"
 
 const navItems = [
+  { name: "Services", href: "/services" },
+  { name: "Products", href: "/products" },
   { name: "Projects", href: "/projects" },
+  { name: "Blog", href: "/blog" },
   { name: "Contact", href: "/contact" },
 ]
 
@@ -44,9 +47,9 @@ export function Navigation() {
         <div className="flex items-center gap-3">
           <Link
             href="/contact"
-            className="hidden rounded-xl bg-emerald-500 px-4 py-2 text-sm font-semibold text-neutral-900 transition-colors hover:bg-emerald-400 sm:inline-flex"
+            className="hidden rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-neutral-900 transition-colors hover:bg-emerald-400 sm:inline-flex"
           >
-            Start Growing
+            Book a Call
           </Link>
           <MobileNav />
         </div>

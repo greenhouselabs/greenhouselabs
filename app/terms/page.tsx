@@ -4,6 +4,9 @@ import Link from "next/link"
 export const metadata: Metadata = {
   title: "Terms of Service",
   description: "Terms and conditions governing your use of Greenhouse Labs services.",
+  alternates: {
+    canonical: "/terms",
+  },
 }
 
 export default function TermsPage() {
@@ -113,8 +116,8 @@ export default function TermsPage() {
         <section>
           <h2 className="text-2xl font-semibold text-white mb-4">10. Contact</h2>
           <div className="bg-neutral-900/40 border border-white/10 rounded-xl p-6">
-            <p className="text-neutral-300 mb-2"><strong>Email:</strong> <a href="mailto:legal@greenhouselabs.com" className="text-emerald-400 hover:text-emerald-300">legal@greenhouselabs.com</a></p>
-            <p className="text-neutral-300"><strong>Website:</strong> <a href="https://greenhouselabs.com" className="text-emerald-400 hover:text-emerald-300">greenhouselabs.com</a></p>
+            <p className="text-neutral-300 mb-2"><strong>Email:</strong> <a href="mailto:admin@greenhouselabs.io" className="text-emerald-400 hover:text-emerald-300">admin@greenhouselabs.io</a></p>
+            <p className="text-neutral-300"><strong>Website:</strong> <a href="https://greenhouselabs.io" className="text-emerald-400 hover:text-emerald-300">greenhouselabs.io</a></p>
           </div>
         </section>
       </div>

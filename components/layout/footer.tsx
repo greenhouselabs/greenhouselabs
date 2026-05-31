@@ -1,6 +1,10 @@
 import Link from "next/link"
 
 const footerLinks = [
+  { name: "Services", href: "/services" },
+  { name: "Products", href: "/products" },
+  { name: "Projects", href: "/projects" },
+  { name: "Blog", href: "/blog" },
   { name: "Privacy", href: "/privacy" },
   { name: "Terms", href: "/terms" },
   { name: "Contact", href: "/contact" },
@@ -16,7 +20,7 @@ export function Footer() {
             &copy; {new Date().getFullYear()} Greenhouse Labs
           </span>
         </div>
-        <div className="flex gap-6 text-sm text-neutral-400">
+        <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm text-neutral-400">
           {footerLinks.map((link) => (
             <Link
               key={link.name}

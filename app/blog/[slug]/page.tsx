@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
+import Image from "next/image"
 import { notFound } from "next/navigation"
 import { MDXRemote } from "next-mdx-remote/rsc"
 import { Badge } from "@/components/ui/badge"
@@ -21,6 +22,26 @@ export function generateMetadata({ params }: BlogPostPageProps): Metadata {
   return {
     title: post.frontmatter.title,
     description: post.frontmatter.excerpt,
+    alternates: {
+      canonical: `/blog/${post.frontmatter.slug}`,
+    },
+    openGraph: {
+      title: post.frontmatter.title,
+      description: post.frontmatter.excerpt,
+      url: `/blog/${post.frontmatter.slug}`,
+      type: "article",
+      publishedTime: post.frontmatter.date,
+      authors: [post.frontmatter.author],
+      tags: post.frontmatter.categories,
+      images: post.frontmatter.featured_image
+        ? [
+            {
+              url: post.frontmatter.featured_image,
+              alt: post.frontmatter.title,
+            },
+          ]
+        : undefined,
+    },
   }
 }
 
@@ -62,6 +83,18 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
           <span>{post.readingTime}</span>
         </div>
       </header>
+
+      {post.frontmatter.featured_image && (
+        <div className="relative mb-10 aspect-[16/9] overflow-hidden rounded-lg border border-white/10 bg-neutral-900">
+          <Image
+            src={post.frontmatter.featured_image}
+            alt=""
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
+      )}
 
       {/* MDX Content */}
       <article className="prose prose-invert prose-emerald max-w-none prose-headings:font-semibold prose-a:text-emerald-400 prose-a:no-underline hover:prose-a:underline prose-strong:text-white prose-code:text-emerald-300 prose-code:before:content-none prose-code:after:content-none">

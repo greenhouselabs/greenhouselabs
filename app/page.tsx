@@ -3,6 +3,7 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { ArrowRight, Boxes, Hammer, ShoppingBag } from "lucide-react"
 import { ParticleCanvas } from "@/components/effects/particle-canvas"
 import { MagneticCard } from "@/components/effects/magnetic-card"
 import { NewsletterForm } from "@/components/newsletter-form"
@@ -26,6 +27,33 @@ const stages = [
   },
 ]
 
+const salesPaths = [
+  {
+    title: "Buy Products",
+    description:
+      "Try or license ready-made apps and tools as they reach harvest.",
+    href: "/products",
+    cta: "Browse Products",
+    icon: ShoppingBag,
+  },
+  {
+    title: "Hire the Studio",
+    description:
+      "Bring us an idea, workflow, or half-built app and we will help ship it.",
+    href: "/services",
+    cta: "View Services",
+    icon: Hammer,
+  },
+  {
+    title: "Productize a Tool",
+    description:
+      "Turn an internal tool into a sellable offer with docs, licensing, and GTM support.",
+    href: "/contact",
+    cta: "Book a Call",
+    icon: Boxes,
+  },
+]
+
 export default function Home() {
   const featuredProjects = getFeaturedProjects()
 
@@ -39,52 +67,88 @@ export default function Home() {
         </div>
         <div className="relative mx-auto max-w-3xl text-center space-y-6">
           <h1 className="text-4xl font-semibold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
-            Where{" "}
+            Practical{" "}
             <span className="gradient-text shimmer-text bg-gradient-to-r from-emerald-300 via-teal-200 to-emerald-300">
-              Generative AI
+              AI products
             </span>{" "}
-            projects grow
+            and software services that ship
           </h1>
           <p className="mx-auto max-w-xl text-lg text-neutral-300 sm:text-xl">
-            A portfolio and incubator — Greenhouse Labs is the nursery for ideas
-            that bloom into real AI products, content, and tools.
+            Buy ready-made apps and media tools, or hire Greenhouse Labs to
+            design, build, and launch your next software product.
           </p>
           <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Button
               size="lg"
-              className="rounded-xl bg-emerald-500 text-neutral-900 hover:bg-emerald-400 font-semibold w-full sm:w-auto"
+              className="rounded-lg bg-emerald-500 text-neutral-900 hover:bg-emerald-400 font-semibold w-full sm:w-auto"
               asChild
             >
-              <Link href="/contact">Start Growing</Link>
+              <Link href="/products">
+                Browse Products
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
             </Button>
             <Button
               size="lg"
               variant="outline"
-              className="rounded-xl border-white/10 hover:bg-white/10 w-full sm:w-auto"
+              className="rounded-lg border-white/10 hover:bg-white/10 w-full sm:w-auto"
               asChild
             >
-              <Link href="/projects">Explore Projects</Link>
+              <Link href="/services">View Services</Link>
             </Button>
           </div>
         </div>
       </header>
 
+      {/* SALES PATHS */}
+      <section className="animate-on-scroll mx-auto max-w-7xl px-6 pb-24">
+        <div className="grid gap-5 md:grid-cols-3">
+          {salesPaths.map((path) => {
+            const Icon = path.icon
+
+            return (
+              <Card
+                key={path.title}
+                className="rounded-lg border-white/10 bg-neutral-900/40 hover:bg-neutral-900/60 transition-colors"
+              >
+                <CardContent className="p-6">
+                  <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-300">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <h2 className="text-xl font-semibold">{path.title}</h2>
+                  <p className="mt-2 min-h-16 text-sm leading-6 text-neutral-300">
+                    {path.description}
+                  </p>
+                  <Link
+                    href={path.href}
+                    className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-emerald-300 transition-colors hover:text-emerald-200"
+                  >
+                    {path.cta}
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </CardContent>
+              </Card>
+            )
+          })}
+        </div>
+      </section>
+
       {/* INCUBATOR STAGES */}
       <section className="animate-on-scroll mx-auto max-w-7xl px-6 pb-24">
         <div className="mx-auto max-w-2xl text-center space-y-4">
           <h2 className="text-3xl font-semibold sm:text-4xl">
-            Incubator &amp; Nursery
+            Product Pipeline
           </h2>
           <p className="text-neutral-300 text-lg">
-            From seed ideas to thriving releases — track growth stages and get
-            early access.
+            From early experiments to sellable apps, every project has a clear
+            path toward launch, licensing, or client proof.
           </p>
         </div>
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {stages.map((stage) => (
             <Card
               key={stage.title}
-              className="rounded-2xl border-white/10 bg-neutral-900/40 hover:bg-neutral-900/60 transition-colors group"
+              className="rounded-lg border-white/10 bg-neutral-900/40 hover:bg-neutral-900/60 transition-colors group"
             >
               <CardContent className="p-6">
                 <div className="mb-3 text-3xl">{stage.icon}</div>
@@ -108,12 +172,13 @@ export default function Home() {
               Featured Projects
             </h2>
             <p className="mt-2 text-neutral-300">
-              A mix of research experiments and production-ready tools.
+              A mix of live products, production systems, and custom software
+              case studies.
             </p>
           </div>
           <Button
             variant="outline"
-            className="rounded-xl border-white/10 hover:bg-white/10 w-full sm:w-auto"
+            className="rounded-lg border-white/10 hover:bg-white/10 w-full sm:w-auto"
             asChild
           >
             <Link href="/projects">View all</Link>

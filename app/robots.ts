@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/api/"],
     },
-    sitemap: "https://greenhouselabs.com/sitemap.xml",
+    sitemap: "https://www.greenhouselabs.io/sitemap.xml",
   }
 }

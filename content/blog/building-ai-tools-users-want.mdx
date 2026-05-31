@@ -1,146 +1,121 @@
 ---
-title: "Building AI tools that users actually want"
+title: "What our current products taught us about useful software"
 slug: "building-ai-tools-users-want"
-date: "2024-01-20"
-excerpt: "Lessons learned from launching 6 AI products in 12 months and what separates successful AI tools from the ones gathering digital dust."
+date: "2026-05-31"
+excerpt: "Lessons from Circuit, Privy AI, NDI Audio Recorder, and our internal AI workflow platform about building products people can actually use."
 author: "Greenhouse Labs"
 categories: ["AI", "Product Development", "Lessons Learned"]
-featured_image: "/images/blog/ai-tools-hero.jpg"
+featured_image: "/images/blog/from-projects-to-products.jpg"
 published: true
 ---
 
-After launching six AI-powered tools in the past year—from Privy AI's privacy policy analyzer to our upcoming SwingSauce golf trainer—we've learned that building AI tools users actually want requires a fundamentally different approach than traditional software development.
+Greenhouse Labs has always been a little bit studio, a little bit incubator, and a little bit product lab. That mix is starting to matter more now that our half-finished apps are becoming real offers: products people can try, license, buy, or use as proof that we can build something similar for them.
 
-Here's what we wish we'd known when we started.
+The current lineup tells a useful story:
 
-## The AI Tool Paradox
+- [Circuit](/projects/circuit) is a production-grade creator streaming platform with native Base L2 payment rails.
+- [Privy AI](/projects/privy-ai) turns privacy policies and terms of service into plain-English risk analysis.
+- [NDI Audio Recorder](/projects/ndi-audio-recorder) is a focused broadcast utility for recording professional NDI audio streams.
+- [AI Workflow Platform](/projects/ai-workflow-platform) is a custom internal platform case study: nine production modules, secure AI workflows, and real operational adoption.
 
-The biggest challenge with AI tools isn't the AI—it's everything else. We've seen countless technically impressive AI demos that nobody uses because they:
+They are different products, but the pattern is the same: useful software starts with a real workflow, not a shiny feature.
 
-- Solve problems people didn't know they had
-- Require too much setup or learning
-- Produce outputs that need extensive editing
-- Feel like magic tricks instead of practical tools
+## The Product Has to Fit a Job
 
-The most successful AI tools we've built feel less like "AI" and more like superpowers.
+The easiest trap in AI and automation is starting with the technology. "We can use an LLM here" is not a product strategy. Neither is "we should add crypto payments" or "we should make a dashboard."
 
-## Lesson 1: Start with the Job, Not the Technology
+The better question is: what job is painful enough that someone will change their behavior?
 
-### What We Used to Do
-"We have access to GPT-4, what could we build with it?"
+For Privy AI, the job is obvious. People are asked to agree to legal documents they do not understand. A useful product does not need to make privacy law exciting; it needs to make risk visible quickly.
 
-### What We Do Now
-"What job are people struggling to do that AI could help with?"
+For NDI Audio Recorder, the job is narrower but just as real. Broadcast professionals need reliable capture, monitoring, synchronization, and export. The value is not novelty. The value is that the tool fits into a production workflow where failure is expensive.
 
-**Privy AI Example:** Instead of "let's build a document analyzer," we started with "people spend hours reading privacy policies they'll never understand—how can AI make this instant and clear?"
+For Circuit, the job is broader: help creators stream, monetize, and own more of the economic relationship with their audience. That means live video, VOD, chat, identity, subscriptions, tips, ticketing, wallets, and payments all have to feel like one product instead of a pile of features.
 
-The result? 94% user satisfaction because we solved a real pain point, not just showcased AI capabilities.
+## Useful Beats Impressive
 
-## Lesson 2: The Output Is Only Half the Product
+Impressive demos are easy to overvalue. Useful products survive contact with real users.
 
-Great AI tools aren't just about generating good outputs—they're about making those outputs immediately useful.
+Privy AI is not useful because it can summarize a document. It is useful because the summary becomes actionable: risk scoring, plain-English explanations, and a faster path to deciding whether a policy deserves trust.
 
-### Bad AI Tool Flow:
-1. User inputs data
-2. AI processes and returns raw output
-3. User figures out what to do with it
+Circuit is not useful because it has blockchain rails. It is useful if the payment system feels invisible when it should be invisible, transparent when money moves, and familiar enough that creators can use it without becoming infrastructure experts.
 
-### Good AI Tool Flow:
-1. User inputs data
-2. AI processes and returns structured, actionable output
-3. User can immediately use or export the result
+The AI Workflow Platform is not useful because it has an agentic assistant. It is useful because finance, producers, sales, design, and account teams can work from shared data, permission-filtered retrieval, and workflows that produce real artifacts.
 
-**NDI Audio Recorder Example:** We don't just capture audio streams—we provide frame-accurate timestamps, multiple export formats, and real-time monitoring so broadcast professionals can drop our output directly into their workflows.
+That is the bar we are trying to hold ourselves to: the product should make the user's next step clearer.
 
-## Lesson 3: Embrace Constraints, Don't Fight Them
+## Productization Is Its Own Discipline
 
-Every AI model has limitations. Instead of trying to hide them, we design around them:
+A working app is not the same thing as a sellable product.
 
-### API Rate Limits
-Instead of queuing requests, we show progress and set expectations upfront.
+That distinction is especially important for a lab like ours, where many ideas start as internal tools, prototypes, experiments, or one-off client solutions. To become a real offer, an app needs more than code:
 
-### Context Windows
-Rather than trying to process entire documents, we chunk intelligently and show our reasoning.
+- A clear buyer or user
+- A simple promise
+- A stable onboarding path
+- Pricing or licensing logic
+- Support expectations
+- Documentation
+- A conversion path on the site
 
-### Accuracy Boundaries
-We're explicit about confidence levels and what our tools can't do.
+That is why Greenhouse Labs now separates [Products](/products), [Services](/services), and [Projects](/projects). Products are things you can try, buy, or license. Services are ways to hire the studio. Projects are proof: live platforms, case studies, and systems that show how we think.
 
-**SwingSauce Example:** Golf swing analysis will never be 100% accurate from phone cameras. Instead of hiding this, we focus on trends and improvements over time, which golfers find more valuable than perfect shot-by-shot analysis.
+## The Best Products Have a Narrow Core
 
-## Lesson 4: Speed Matters More Than Perfect Accuracy
+Even broad platforms need a narrow center.
 
-Users prefer a tool that's 85% accurate in 30 seconds over one that's 95% accurate in 5 minutes.
+Circuit's center is creator monetization around live and on-demand video. The product can support chat, comments, polls, subscriptions, wallets, event tickets, and embeds because all of those pieces orbit the same core job.
 
-We've learned to:
-- Optimize for time-to-value over perfect results
-- Show partial results as they're generated
-- Allow users to refine outputs rather than regenerate from scratch
+Privy AI's center is consumer understanding of legal risk. If a feature does not make policies easier to evaluate, it does not belong in the first version.
 
-## Lesson 5: The Interface Is the Product
+NDI Audio Recorder's center is professional audio capture. The interface, export formats, monitoring, and reliability all serve that one promise.
 
-AI tools live or die by their interfaces. The best AI in the world is useless if users can't figure out how to use it.
+The AI Workflow Platform's center is operational leverage: reduce manual work, preserve permissions, and create real outputs for a team that has to move quickly.
 
-### Our Interface Principles:
+Narrow does not mean small. It means the product knows what it is for.
 
-**Progressive Disclosure:** Start simple, reveal complexity as needed
-**Immediate Feedback:** Show something happening within 2 seconds
-**Multiple Entry Points:** Support copy/paste, file upload, and direct input
-**Export Everything:** Users want their data in their preferred format
+## Services and Products Strengthen Each Other
 
-## What Actually Makes AI Tools Successful
+There is a reason we want both sides of the business on the site.
 
-After analyzing our hits and misses, successful AI tools share these characteristics:
+Products make the studio more credible because they prove we can ship and operate real software. Services make the product lab stronger because client problems expose patterns worth turning into repeatable tools.
 
-### 1. They Replace, Don't Augment
-Good AI tools completely replace a tedious task. They don't just "help" with it.
+That loop is the Greenhouse Labs advantage:
 
-### 2. They Work with Existing Workflows
-People won't change their entire process for your tool. Your tool needs to fit into their existing process.
+1. Build a useful internal or client solution.
+2. Harden the parts that repeat.
+3. Turn the best pieces into products, licenses, or templates.
+4. Use the products as proof for the next custom build.
 
-### 3. They Have Clear Success Metrics
-Users need to know if the AI did a good job. Vague outputs kill adoption.
+Not everything should become a product. Some work is best as a bespoke engagement. But when the same pain shows up more than once, it is worth asking whether the solution can become something people can buy directly.
 
-### 4. They Get Better with Use
-Whether through fine-tuning, better prompts, or user feedback, the tool should improve over time.
+## What We Are Optimizing For Now
 
-## The Tools That Didn't Make It
+The next phase of Greenhouse Labs is less about collecting experiments and more about turning the strongest work into clear offers.
 
-Not all our experiments succeeded. Here's what we learned from the failures:
+That means:
 
-**Social Media Content Generator:** Too generic. Everyone's brand voice is different, and our output felt robotic.
+- Circuit should read like a live creator platform, not just a technical showcase.
+- Privy AI should be easy to try and understand quickly.
+- NDI Audio Recorder should have a clean licensing path.
+- AI Workflow Platform should support the services story: custom AI systems, automation, RAG, dashboards, and production-grade implementation.
 
-**Code Review Assistant:** Too opinionated. Developers want suggestions, not mandates.
+The goal is not to make everything sound bigger than it is. The goal is to make each product easier to understand, easier to trust, and easier to act on.
 
-**Email Response Helper:** Too context-dependent. Professional email requires nuance our AI couldn't capture.
+## The Simple Test
 
-The pattern? These tools tried to replace human judgment instead of human effort.
+Before we call something a product, it should pass a simple test:
 
-## Building Your Own AI Tool: A Checklist
+- Who is it for?
+- What painful job does it solve?
+- Can a visitor see the next step in under ten seconds?
+- Does the product page explain the outcome, not just the features?
+- Is there a clear way to try it, buy it, license it, or ask for a similar build?
 
-Before you start building, ask:
+If the answer is no, the product is not ready for GTM yet. It may still be a good project. It may even be great engineering. But it is not a sellable offer until the path is obvious.
 
-- [ ] Does this solve a problem people actively complain about?
-- [ ] Can you build a working prototype in under a week?
-- [ ] Will the output be immediately usable without editing?
-- [ ] Does it fit into existing workflows?
-- [ ] Can you measure success objectively?
-- [ ] Would you use this tool weekly if someone else built it?
-
-If you can't answer "yes" to all of these, reconsider the approach.
-
-## What's Next
-
-AI tooling is still in its infancy. The biggest opportunities are in industries where:
-
-- Manual processes haven't been automated yet
-- Domain expertise is expensive and scarce
-- Data exists but insights don't
-- Repetitive tasks dominate valuable work
-
-We're continuing to explore these areas through our incubator program, working with partners who understand their industries better than we ever could.
-
-The future belongs to AI tools that feel inevitable once you use them—tools where people say "of course this exists" rather than "wow, this is impressive."
+That is the work in front of us now: take the things already growing in the greenhouse and give them the packaging, positioning, and purchase paths they need to stand on their own.
 
 ---
 
-*Interested in collaborating on an AI tool for your industry? [Get in touch](/contact)—we're always looking for domain experts who want to explore what's possible.*
+*Looking for a ready-made tool? [Browse products](/products). Want Greenhouse Labs to build or productize something for you? [View services](/services) or [get in touch](/contact).*

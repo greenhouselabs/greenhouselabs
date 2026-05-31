@@ -14,6 +14,7 @@ export function ContactForm() {
     budget: "",
     timeline: "",
     description: "",
+    website: "",
   })
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState("")
@@ -42,6 +43,7 @@ export function ContactForm() {
           budget: "",
           timeline: "",
           description: "",
+          website: "",
         })
       } else {
         setMessage("error:" + (data.error || "Failed to submit. Please try again."))
@@ -68,6 +70,18 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
+      <div className="hidden" aria-hidden="true">
+        <label htmlFor="website">Website</label>
+        <input
+          id="website"
+          name="website"
+          value={formData.website}
+          onChange={handleChange}
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </div>
+
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
           <label htmlFor="name" className="block text-sm font-medium mb-2">
@@ -131,6 +145,8 @@ export function ContactForm() {
           className="w-full rounded-xl border border-white/10 bg-neutral-900/60 px-3 py-2 text-sm"
         >
           <option value="">Select project type</option>
+          <option value="product-license">Product / License Inquiry</option>
+          <option value="productization">Productize an Existing App</option>
           <option value="custom-ai-app">Custom AI Application</option>
           <option value="browser-extension">Browser Extension</option>
           <option value="automation-tool">Automation Tool</option>

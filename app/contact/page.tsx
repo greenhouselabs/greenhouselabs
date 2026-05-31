@@ -6,7 +6,16 @@ import { Mail, MessageSquare, Zap, Clock } from "lucide-react"
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Get in touch with Greenhouse Labs. Tell us about your project and we'll help you grow.",
+    "Contact Greenhouse Labs about products, licensing, custom AI apps, and software services.",
+  alternates: {
+    canonical: "/contact",
+  },
+  openGraph: {
+    title: "Contact | Greenhouse Labs",
+    description:
+      "Contact Greenhouse Labs about products, licensing, custom AI apps, and software services.",
+    url: "/contact",
+  },
 }
 
 export default function ContactPage() {
@@ -17,8 +26,8 @@ export default function ContactPage() {
           Let&apos;s Grow Something Together
         </h1>
         <p className="text-lg text-neutral-300 max-w-2xl mx-auto">
-          Ready to turn your AI idea into reality? Tell us about your project
-          and we&apos;ll help you navigate from seedling to harvest.
+          Tell us whether you want to buy a product, license a tool, finish an
+          app, or build something custom.
         </p>
       </div>
 
@@ -27,10 +36,9 @@ export default function ContactPage() {
         <div className="lg:col-span-2">
           <Card className="rounded-2xl border-white/10 bg-neutral-900/40">
             <CardHeader>
-              <CardTitle className="text-2xl">Start Your Project</CardTitle>
+              <CardTitle className="text-2xl">Start the Conversation</CardTitle>
               <p className="text-neutral-400">
-                Fill out the form below and we&apos;ll get back to you within 24
-                hours.
+                Send a short brief and we&apos;ll get back to you within 24 hours.
               </p>
             </CardHeader>
             <CardContent>
@@ -58,9 +66,9 @@ export default function ContactPage() {
               <div className="flex items-center gap-3">
                 <MessageSquare className="h-5 w-5 text-emerald-400" />
                 <div>
-                  <div className="font-medium">Discord</div>
+                  <div className="font-medium">Best for</div>
                   <div className="text-sm text-neutral-400">
-                    Join our community
+                    Products, licenses, and custom builds
                   </div>
                 </div>
               </div>

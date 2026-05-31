@@ -4,6 +4,9 @@ import Link from "next/link"
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description: "How Greenhouse Labs collects, uses, and protects your information.",
+  alternates: {
+    canonical: "/privacy",
+  },
 }
 
 export default function PrivacyPage() {
@@ -50,7 +53,7 @@ export default function PrivacyPage() {
           <h2 className="text-2xl font-semibold text-white mb-4">3. Information Sharing</h2>
           <p className="text-neutral-300 mb-4">We do not sell your personal information. We may share information with:</p>
           <ul className="space-y-2 text-neutral-300 mb-6">
-            <li><strong>Service Providers:</strong> Trusted third-party services that help us operate (Vercel for hosting, Resend for email delivery)</li>
+            <li><strong>Service Providers:</strong> Trusted third-party services that help us operate, including Vercel for hosting, Buttondown for newsletter delivery, and Google Sheets or Apps Script for inquiry capture</li>
             <li><strong>Legal Requirements:</strong> When required by law or to protect our rights</li>
           </ul>
         </section>

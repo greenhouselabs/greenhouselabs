@@ -9,6 +9,15 @@ export const metadata: Metadata = {
   title: "Projects",
   description:
     "Explore Greenhouse Labs projects — from seedling prototypes to harvest-ready products.",
+  alternates: {
+    canonical: "/projects",
+  },
+  openGraph: {
+    title: "Projects | Greenhouse Labs",
+    description:
+      "Explore Greenhouse Labs projects from seedling prototypes to harvest-ready products.",
+    url: "/projects",
+  },
 }
 
 function stageBadgeClasses(stage: string) {

@@ -9,7 +9,10 @@ import { cn } from "@/lib/utils"
 
 const navItems = [
   { name: "Home", href: "/" },
+  { name: "Services", href: "/services" },
+  { name: "Products", href: "/products" },
   { name: "Projects", href: "/projects" },
+  { name: "Blog", href: "/blog" },
   { name: "Contact", href: "/contact" },
 ]
 
@@ -33,7 +36,7 @@ export function MobileNav() {
     }
   }, [open])
 
-  const overlay = mounted
+  const overlay = mounted && open
     ? createPortal(
         <>
           {/* Backdrop */}
@@ -47,6 +50,7 @@ export function MobileNav() {
 
           {/* Slide-out panel */}
           <div
+            id="mobile-navigation"
             className={cn(
               "fixed right-0 top-0 z-[60] h-full w-72 border-l border-white/5 p-6 pt-20 transition-transform duration-300 ease-out",
               open ? "translate-x-0" : "translate-x-full"
@@ -73,9 +77,9 @@ export function MobileNav() {
             <div className="mt-8 border-t border-white/10 pt-8">
               <Link
                 href="/contact"
-                className="block w-full rounded-xl bg-emerald-500 px-4 py-3 text-center font-semibold text-neutral-900 transition-colors hover:bg-emerald-400"
+                className="block w-full rounded-lg bg-emerald-500 px-4 py-3 text-center font-semibold text-neutral-900 transition-colors hover:bg-emerald-400"
               >
-                Start Growing
+                Book a Call
               </Link>
             </div>
           </div>
@@ -90,6 +94,8 @@ export function MobileNav() {
         onClick={() => setOpen(!open)}
         className="relative z-[65] rounded-lg p-2 text-neutral-400 transition-colors hover:text-white"
         aria-label={open ? "Close menu" : "Open menu"}
+        aria-expanded={open}
+        aria-controls="mobile-navigation"
       >
         {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
       </button>

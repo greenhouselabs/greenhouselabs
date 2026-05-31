@@ -27,6 +27,14 @@ export interface ProjectFrontmatter {
     live?: string
     repo?: string
     doc?: string
+    purchase?: string
+    demo?: string
+  }
+  offer?: {
+    type: "product" | "service" | "case-study"
+    status: string
+    cta: string
+    href?: string
   }
   results?: {
     metric: string
