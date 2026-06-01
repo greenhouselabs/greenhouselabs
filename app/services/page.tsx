@@ -10,6 +10,8 @@ import {
   Workflow,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { BuildPathPreview } from "@/components/effects/build-path-preview"
+import { RegenerativeText } from "@/components/effects/regenerative-text"
 
 export const metadata: Metadata = {
   title: "Services",
@@ -40,6 +42,8 @@ export const metadata: Metadata = {
     images: ["/images/og/services.jpg"],
   },
 }
+
+const serviceFocusPhrases = ["messy workflows", "media tools", "AI product launches"]
 
 const services = [
   {
@@ -95,7 +99,16 @@ export default function ServicesPage() {
     <div className="mx-auto max-w-7xl px-6 py-12">
       <section className="mx-auto mb-12 max-w-3xl text-center">
         <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-          Custom software for AI, media, and product launches
+          Custom software for{" "}
+          <RegenerativeText
+            phrases={serviceFocusPhrases}
+            className="gradient-text shimmer-text bg-gradient-to-r from-emerald-300 via-teal-200 to-emerald-300"
+            startDelay={800}
+            typeDelay={62}
+            deleteDelay={36}
+            holdDelay={900}
+            repeatDelay={8200}
+          />
         </h1>
         <p className="mt-4 text-lg text-neutral-300">
           Hire Greenhouse Labs to finish, harden, and launch the tools your team
@@ -122,6 +135,10 @@ export default function ServicesPage() {
             <Link href="/products">Browse Products</Link>
           </Button>
         </div>
+      </section>
+
+      <section className="mb-14 border-y border-white/10 py-8">
+        <BuildPathPreview />
       </section>
 
       <section className="grid gap-5 md:grid-cols-2">

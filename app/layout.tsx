@@ -76,7 +76,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.variable} font-sans antialiased min-h-screen bg-neutral-950 text-neutral-100 selection:bg-emerald-300/40 selection:text-neutral-900`}
+        className={`${inter.variable} flex min-h-screen flex-col font-sans antialiased bg-neutral-950 text-neutral-100 selection:bg-emerald-300/40 selection:text-neutral-900`}
       >
         <script
           type="application/ld+json"

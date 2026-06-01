@@ -4,6 +4,7 @@ import Image from "next/image"
 import { ArrowRight, ExternalLink, ShoppingBag } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
+import { RegenerativeText } from "@/components/effects/regenerative-text"
 import { getAllProjects } from "@/lib/content"
 
 export const metadata: Metadata = {
@@ -35,6 +36,8 @@ export const metadata: Metadata = {
     images: ["/images/og/products.jpg"],
   },
 }
+
+const productHeroPhrases = ["tools", "AI utilities", "products"]
 
 function isExternalUrl(href: string) {
   return href.startsWith("http://") || href.startsWith("https://")
@@ -76,7 +79,17 @@ export default function ProductsPage() {
     <div className="mx-auto max-w-7xl px-6 py-12">
       <section className="mx-auto mb-12 max-w-3xl text-center">
         <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-          Ready-made products from the lab
+          Ready-made{" "}
+          <RegenerativeText
+            phrases={productHeroPhrases}
+            className="gradient-text shimmer-text bg-gradient-to-r from-emerald-300 via-teal-200 to-emerald-300"
+            startDelay={850}
+            typeDelay={64}
+            deleteDelay={36}
+            holdDelay={880}
+            repeatDelay={8800}
+          />{" "}
+          from the lab
         </h1>
         <p className="mt-4 text-lg text-neutral-300">
           Buy, try, or license Greenhouse Labs apps as they reach harvest. Some

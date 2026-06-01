@@ -3,6 +3,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Badge } from "@/components/ui/badge"
 import { MagneticCard } from "@/components/effects/magnetic-card"
+import { RegenerativeText } from "@/components/effects/regenerative-text"
 import { getAllProjects } from "@/lib/content"
 
 export const metadata: Metadata = {
@@ -19,6 +20,12 @@ export const metadata: Metadata = {
     url: "/projects",
   },
 }
+
+const projectPathPhrases = [
+  "seedling prototypes",
+  "active builds",
+  "harvest-ready products",
+]
 
 function stageBadgeClasses(stage: string) {
   switch (stage) {
@@ -56,8 +63,17 @@ export default function ProjectsPage() {
           Projects
         </h1>
         <p className="text-lg text-neutral-300 max-w-2xl mx-auto">
-          From seedling prototypes to harvest-ready products — explore
-          everything growing in the greenhouse.
+          Explore{" "}
+          <RegenerativeText
+            phrases={projectPathPhrases}
+            className="text-emerald-200"
+            startDelay={900}
+            typeDelay={56}
+            deleteDelay={34}
+            holdDelay={860}
+            repeatDelay={9400}
+          />{" "}
+          growing in the greenhouse.
         </p>
       </div>
 

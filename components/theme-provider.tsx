@@ -6,7 +6,7 @@ import { type ThemeProviderProps } from "next-themes/dist/types"
 
 export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
   return (
-    <div suppressHydrationWarning>
+    <div suppressHydrationWarning className="flex min-h-screen flex-col">
       <NextThemesProvider {...props}>
         {children}
       </NextThemesProvider>

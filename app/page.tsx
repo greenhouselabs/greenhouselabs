@@ -3,27 +3,45 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { ArrowRight, Boxes, Hammer, ShoppingBag } from "lucide-react"
+import {
+  ArrowRight,
+  Boxes,
+  Hammer,
+  Leaf,
+  Rocket,
+  ShoppingBag,
+  Sprout,
+} from "lucide-react"
 import { ParticleCanvas } from "@/components/effects/particle-canvas"
+import { RegenerativeText } from "@/components/effects/regenerative-text"
 import { MagneticCard } from "@/components/effects/magnetic-card"
 import { NewsletterForm } from "@/components/newsletter-form"
+import { HomeProjectShaper } from "@/components/home-project-shaper"
 import { getFeaturedProjects } from "@/lib/content"
+
+const heroProductPhrases = ["smart apps", "AI tools", "AI products"]
 
 const stages = [
   {
     title: "Seedlings",
-    description: "Sketches, prompts, proofs-of-concept ready to sprout.",
-    icon: "🌱",
+    description:
+      "Rough ideas, workflow maps, prompt tests, and proof-of-concept builds.",
+    detail: "Validate the shape",
+    visual: Sprout,
   },
   {
     title: "Blooming",
-    description: "Active builds with dev logs, roadmaps, and opt-in betas.",
-    icon: "🌸",
+    description:
+      "Active builds with real users, system integrations, QA, and launch planning.",
+    detail: "Harden the system",
+    visual: Leaf,
   },
   {
     title: "Harvest",
-    description: "Launched apps, downloadable tools, and commercial licenses.",
-    icon: "🌾",
+    description:
+      "Launched products with docs, licensing, analytics, and support loops.",
+    detail: "Ship and improve",
+    visual: Rocket,
   },
 ]
 
@@ -54,6 +72,13 @@ const salesPaths = [
   },
 ]
 
+function StageFallbackIcon({ stage }: { stage: string }) {
+  const Icon =
+    stage === "Seedling" ? Sprout : stage === "Blooming" ? Leaf : Rocket
+
+  return <Icon className="h-10 w-10 text-emerald-300/60" />
+}
+
 export default function Home() {
   const featuredProjects = getFeaturedProjects()
 
@@ -68,9 +93,15 @@ export default function Home() {
         <div className="relative mx-auto max-w-3xl text-center space-y-6">
           <h1 className="text-4xl font-semibold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
             Practical{" "}
-            <span className="gradient-text shimmer-text bg-gradient-to-r from-emerald-300 via-teal-200 to-emerald-300">
-              AI products
-            </span>{" "}
+            <RegenerativeText
+              phrases={heroProductPhrases}
+              className="gradient-text shimmer-text bg-gradient-to-r from-emerald-300 via-teal-200 to-emerald-300"
+              startDelay={900}
+              typeDelay={72}
+              deleteDelay={42}
+              holdDelay={950}
+              repeatDelay={6500}
+            />{" "}
             and software services that ship
           </h1>
           <p className="mx-auto max-w-xl text-lg text-neutral-300 sm:text-xl">
@@ -100,8 +131,19 @@ export default function Home() {
         </div>
       </header>
 
+      <HomeProjectShaper />
+
       {/* SALES PATHS */}
       <section className="animate-on-scroll mx-auto max-w-7xl px-6 pb-24">
+        <div className="mb-8 max-w-2xl">
+          <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
+            Once the path is clear, choose how you want to move
+          </h2>
+          <p className="mt-3 text-sm leading-6 text-neutral-300 sm:text-base">
+            Some teams need a finished product, some need a build partner, and
+            some have an internal tool that is ready to become a sellable offer.
+          </p>
+        </div>
         <div className="grid gap-5 md:grid-cols-3">
           {salesPaths.map((path) => {
             const Icon = path.icon
@@ -140,27 +182,49 @@ export default function Home() {
             Product Pipeline
           </h2>
           <p className="text-neutral-300 text-lg">
-            From early experiments to sellable apps, every project has a clear
-            path toward launch, licensing, or client proof.
+            A simple view of how rough opportunities become validated systems,
+            production builds, and launched offers.
           </p>
         </div>
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {stages.map((stage) => (
-            <Card
-              key={stage.title}
-              className="rounded-lg border-white/10 bg-neutral-900/40 hover:bg-neutral-900/60 transition-colors group"
-            >
-              <CardContent className="p-6">
-                <div className="mb-3 text-3xl">{stage.icon}</div>
-                <h3 className="text-xl font-semibold group-hover:text-emerald-300 transition-colors">
-                  {stage.title}
-                </h3>
-                <p className="mt-2 text-sm text-neutral-300">
-                  {stage.description}
-                </p>
-              </CardContent>
-            </Card>
-          ))}
+        <div className="relative mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {stages.map((stage, index) => {
+            const Icon = stage.visual
+
+            return (
+              <Card
+                key={stage.title}
+                className="relative rounded-lg border-white/10 bg-neutral-900/40 hover:bg-neutral-900/60 transition-colors group"
+              >
+                {index < stages.length - 1 && (
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute left-full top-10 hidden w-6 items-center justify-center text-emerald-300/40 lg:flex"
+                  >
+                    <ArrowRight className="h-4 w-4" />
+                  </div>
+                )}
+                <CardContent className="p-6">
+                  <div className="mb-5 flex items-center justify-between">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-lg border border-emerald-400/20 bg-emerald-500/10 text-emerald-300">
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <div className="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500">
+                      0{index + 1}
+                    </div>
+                  </div>
+                  <h3 className="text-xl font-semibold group-hover:text-emerald-300 transition-colors">
+                    {stage.title}
+                  </h3>
+                  <p className="mt-1 text-sm font-medium text-emerald-200">
+                    {stage.detail}
+                  </p>
+                  <p className="mt-2 text-sm text-neutral-300">
+                    {stage.description}
+                  </p>
+                </CardContent>
+              </Card>
+            )
+          })}
         </div>
       </section>
 
@@ -201,11 +265,7 @@ export default function Home() {
                       className="object-cover transition-transform group-hover:scale-105"
                     />
                   ) : (
-                    <span className="text-4xl opacity-50">
-                      {project.frontmatter.stage === "Seedling" && "🌱"}
-                      {project.frontmatter.stage === "Blooming" && "🌸"}
-                      {project.frontmatter.stage === "Harvest" && "🌾"}
-                    </span>
+                    <StageFallbackIcon stage={project.frontmatter.stage} />
                   )}
                 </div>
                 <div className="mt-4 flex items-center justify-between">

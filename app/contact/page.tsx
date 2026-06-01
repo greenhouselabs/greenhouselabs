@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ContactForm } from "@/components/contact-form"
+import { RegenerativeText } from "@/components/effects/regenerative-text"
 import { Mail, MessageSquare, Zap, Clock } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -18,12 +19,23 @@ export const metadata: Metadata = {
   },
 }
 
+const contactHeroPhrases = ["shape the brief", "plan the build", "grow together"]
+
 export default function ContactPage() {
   return (
     <div className="mx-auto max-w-4xl px-6 py-12">
       <div className="text-center mb-12">
         <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl mb-4">
-          Let&apos;s Grow Something Together
+          Let&apos;s{" "}
+          <RegenerativeText
+            phrases={contactHeroPhrases}
+            className="gradient-text shimmer-text bg-gradient-to-r from-emerald-300 via-teal-200 to-emerald-300"
+            startDelay={800}
+            typeDelay={62}
+            deleteDelay={36}
+            holdDelay={900}
+            repeatDelay={9000}
+          />
         </h1>
         <p className="text-lg text-neutral-300 max-w-2xl mx-auto">
           Tell us whether you want to buy a product, license a tool, finish an
@@ -82,8 +94,8 @@ export default function ContactPage() {
                 <div className="font-medium">Response Time</div>
               </div>
               <p className="text-sm text-neutral-300">
-                We typically respond within 24 hours with a detailed proposal
-                and next steps.
+                We typically respond within 24 hours with a quick follow-up or
+                next step.
               </p>
             </CardContent>
           </Card>
