@@ -1,10 +1,26 @@
 import { NextResponse } from "next/server"
 
+const SHEETS_WEBHOOK_URL = process.env.GOOGLE_SHEETS_WEBHOOK_URL
 const MAX_BODY_SIZE = 10_000
 const BUTTONDOWN_TIMEOUT_MS = 8_000
+const SHEETS_WEBHOOK_TIMEOUT_MS = 8_000
+const DEFAULT_TAG = "website"
+const NEWSLETTER_SHEET = "Email Capture"
 
 function cleanString(value: unknown, maxLength = 254) {
   return typeof value === "string" ? value.trim().slice(0, maxLength) : ""
+}
+
+function cleanTags(value: unknown) {
+  if (!Array.isArray(value)) return []
+
+  return Array.from(
+    new Set(
+      value
+        .map((tag) => cleanString(tag, 48).toLowerCase())
+        .filter((tag) => /^[a-z0-9][a-z0-9-_]*$/.test(tag))
+    )
+  ).slice(0, 8)
 }
 
 export async function POST(request: Request) {
@@ -26,6 +42,8 @@ export async function POST(request: Request) {
     }
 
     const email = cleanString(body.email)
+    const source = cleanString(body.source, 120) || "website"
+    const tags = Array.from(new Set([DEFAULT_TAG, ...cleanTags(body.tags)]))
 
     // Honeypot: real users never see this field.
     if (cleanString(body.website)) {
@@ -49,6 +67,42 @@ export async function POST(request: Request) {
       )
     }
 
+    if (SHEETS_WEBHOOK_URL) {
+      const controller = new AbortController()
+      const timeout = setTimeout(
+        () => controller.abort(),
+        SHEETS_WEBHOOK_TIMEOUT_MS
+      )
+
+      try {
+        const response = await fetch(SHEETS_WEBHOOK_URL, {
+          method: "POST",
+          headers: { "Content-Type": "text/plain" },
+          body: JSON.stringify({
+            submissionType: "newsletter",
+            sheet: NEWSLETTER_SHEET,
+            email,
+            source,
+            tags,
+          }),
+          redirect: "follow",
+          signal: controller.signal,
+        })
+
+        if (!response.ok) {
+          throw new Error(`Sheets webhook failed: ${response.status}`)
+        }
+      } finally {
+        clearTimeout(timeout)
+      }
+    } else {
+      console.log("Newsletter signup (Sheets not configured):", {
+        email,
+        source,
+        tags,
+      })
+    }
+
     // --- Buttondown integration ---
     // Activate by setting BUTTONDOWN_API_KEY in .env.local
     const buttondownKey = process.env.BUTTONDOWN_API_KEY
@@ -67,7 +121,7 @@ export async function POST(request: Request) {
               Authorization: `Token ${buttondownKey}`,
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({ email, tags: ["website"] }),
+            body: JSON.stringify({ email, tags }),
             signal: controller.signal,
           }
         )
@@ -88,7 +142,9 @@ export async function POST(request: Request) {
     } else {
       console.log(
         "Newsletter signup (Buttondown not configured):",
-        email
+        email,
+        source,
+        tags
       )
     }
 

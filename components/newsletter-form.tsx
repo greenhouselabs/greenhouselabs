@@ -1,9 +1,30 @@
 "use client"
 
-import { useState } from "react"
+import { useId, useState } from "react"
 import { Button } from "@/components/ui/button"
 
-export function NewsletterForm() {
+interface NewsletterFormProps {
+  buttonLabel?: string
+  className?: string
+  formClassName?: string
+  inputClassName?: string
+  placeholder?: string
+  source?: string
+  successMessage?: string
+  tags?: string[]
+}
+
+export function NewsletterForm({
+  buttonLabel = "Sign up",
+  className = "",
+  formClassName = "mx-auto flex max-w-md flex-col gap-2 sm:flex-row",
+  inputClassName = "flex-1 rounded-xl border border-white/10 bg-neutral-900/60 px-4 py-2.5 text-sm placeholder:text-neutral-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 disabled:opacity-50",
+  placeholder = "you@studio.com",
+  source = "website",
+  successMessage,
+  tags = [],
+}: NewsletterFormProps) {
+  const honeypotId = useId()
   const [email, setEmail] = useState("")
   const [website, setWebsite] = useState("")
   const [loading, setLoading] = useState(false)
@@ -18,13 +39,13 @@ export function NewsletterForm() {
       const response = await fetch("/api/newsletter", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, website }),
+        body: JSON.stringify({ email, website, source, tags }),
       })
 
       const data = await response.json()
 
       if (response.ok) {
-        setMessage("success:" + data.message)
+        setMessage("success:" + (successMessage || data.message))
         setEmail("")
         setWebsite("")
       } else {
@@ -41,15 +62,15 @@ export function NewsletterForm() {
   const displayMessage = message.replace(/^(success|error):/, "")
 
   return (
-    <div>
+    <div className={className}>
       <form
         onSubmit={handleSubmit}
-        className="mx-auto flex max-w-md flex-col gap-2 sm:flex-row"
+        className={formClassName}
       >
         <div className="hidden" aria-hidden="true">
-          <label htmlFor="newsletter-website">Website</label>
+          <label htmlFor={honeypotId}>Website</label>
           <input
-            id="newsletter-website"
+            id={honeypotId}
             value={website}
             onChange={(e) => setWebsite(e.target.value)}
             tabIndex={-1}
@@ -60,17 +81,17 @@ export function NewsletterForm() {
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="you@studio.com"
+          placeholder={placeholder}
           required
           disabled={loading}
-          className="flex-1 rounded-xl border border-white/10 bg-neutral-900/60 px-4 py-2.5 text-sm placeholder:text-neutral-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 disabled:opacity-50"
+          className={inputClassName}
         />
         <Button
           type="submit"
           disabled={loading}
           className="rounded-xl bg-emerald-500 text-neutral-900 hover:bg-emerald-400 font-semibold disabled:opacity-50"
         >
-          {loading ? "Signing up..." : "Sign up"}
+          {loading ? "Signing up..." : buttonLabel}
         </Button>
       </form>
       {displayMessage && (

@@ -103,13 +103,17 @@ export default function ProductsPage() {
           const { frontmatter } = project
           const offer = frontmatter.offer
           const href = offer?.href || frontmatter.links?.purchase || frontmatter.links?.live
+          const detailHref =
+            offer?.href && offer.href.startsWith("/products/")
+              ? offer.href
+              : `/projects/${frontmatter.slug}`
 
           return (
             <article
               key={frontmatter.slug}
               className="flex h-full flex-col overflow-hidden rounded-lg border border-white/10 bg-neutral-900/40"
             >
-              <Link href={`/projects/${frontmatter.slug}`} className="group block">
+              <Link href={detailHref} className="group block">
                 <div className="relative aspect-video border-b border-white/10 bg-neutral-900">
                   {frontmatter.hero_image ? (
                     <Image
@@ -130,7 +134,7 @@ export default function ProductsPage() {
                 <div className="mb-3 flex items-start justify-between gap-3">
                   <div>
                     <Link
-                      href={`/projects/${frontmatter.slug}`}
+                      href={detailHref}
                       className="text-lg font-semibold transition-colors hover:text-emerald-300"
                     >
                       {frontmatter.title}
@@ -173,7 +177,7 @@ export default function ProductsPage() {
                     />
                   )}
                   <Link
-                    href={`/projects/${frontmatter.slug}`}
+                    href={detailHref}
                     className="inline-flex items-center gap-2 text-sm font-medium text-neutral-400 transition-colors hover:text-white"
                   >
                     Details

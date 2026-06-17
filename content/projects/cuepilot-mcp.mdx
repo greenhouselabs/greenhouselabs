@@ -1,0 +1,67 @@
+---
+title: "CuePilot MCP"
+slug: "cuepilot-mcp"
+stage: "Blooming"
+category: "AI-Assisted Live Production"
+blurb: "Read-first production intelligence for vMix: inspect state, diagnose risks, review scripts, and plan automation before control."
+tags: ["vMix", "MCP", "Live Production", "Broadcast", "AI Tools"]
+updated_at: "2026-06-17"
+sort_order: 0
+featured: true
+featured_size: "2x1"
+hero_image: ""
+icon_image: ""
+tech_stack: ["TypeScript", "Model Context Protocol", "vMix API", "Node.js", "Zod"]
+links:
+  demo: "/products/cuepilot-mcp"
+offer:
+  type: "product"
+  status: "Launch prep"
+  cta: "Join Launch List"
+  href: "/products/cuepilot-mcp"
+results:
+  - metric: "Default Mode"
+    value: "Review"
+  - metric: "Control Gates"
+    value: "2"
+  - metric: "Public Package"
+    value: "Coming"
+---
+
+CuePilot MCP is a source-available MCP server for vMix from Greenhouse Labs. It gives AI assistants read-first production intelligence for live-production workflows: inspecting vMix state, explaining presets, diagnosing audio and routing issues, reviewing scripts, generating show checklists, and producing reviewable automation plans before anything changes in vMix.
+
+The public launch is being prepared now. The GitHub repository remains private and the npm package is not published yet, so this page intentionally does not include install commands.
+
+## Why It Exists
+
+AI assistants can be useful in live production, but only if they understand the show before trying to change it. CuePilot MCP starts with Review Mode: read the current state, separate observed facts from assumptions, explain the setup in operator language, and produce reviewable next steps.
+
+## What It Reviews
+
+- Current vMix state, inputs, active and preview paths, overlays, title fields, and tally
+- Audio routing, buses, mutes, solo state, vMix Call patterns, and mix-minus risks
+- Recording, streaming, external output, video path, audio path, and destination blind spots
+- Saved `.vmix` preset files, scripts, triggers, saved-vs-live drift, and redacted preset metadata
+- VB.NET scripts and API plans before they are copied into an operator workflow
+- Connection issues, pasted logs, and safe next checks without exposing production secrets
+
+## Safety Model
+
+Review Mode is the default. It inspects, explains, diagnoses, validates, and plans without executing scripts, calling vMix shortcut functions, saving presets, starting streams, changing audio, or mutating the show.
+
+Control Mode is available only when an operator explicitly enables `VMIX_CONTROL_MODE=true`. High-Impact Control requires both `VMIX_CONTROL_MODE=true` and `VMIX_HIGH_IMPACT=true` for workflows such as recording, streaming, batch commands, scripts, presets, output routing, destructive input changes, and show-building.
+
+## Example Workflows
+
+- Explain the current show like a technical director preparing for rehearsal.
+- Diagnose remote guest audio and flag likely mix-minus problems.
+- Review whether recording, streaming, and external outputs are ready for operator verification.
+- Generate a safe lower-third API plan without executing it.
+- Validate a vMix VB.NET script before pasting it into vMix.
+- Compare before and after XML snapshots and summarize the production meaning of the change.
+
+## Launch Notes
+
+CuePilot MCP will launch under the Greenhouse Labs brand and is legally owned and licensed by Greenhouse Ventures LLC. It is source-available, not open source. It is an independent integration for vMix workflows and is not affiliated with, endorsed by, or sponsored by vMix or StudioCoast Pty Ltd.
+
+[View the launch page](/products/cuepilot-mcp) or [join the launch list](/contact?interest=cuepilot-mcp).
