@@ -11,6 +11,7 @@ import {
   FileSearch,
   GitBranch,
   Headphones,
+  HeartHandshake,
   Lock,
   Monitor,
   Radio,
@@ -23,39 +24,40 @@ import {
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { NewsletterForm } from "@/components/newsletter-form"
-import { CuePilotInstallSection } from "@/components/cuepilot-install-section"
-import { CuePilotLaunchFab } from "@/components/cuepilot-launch-fab"
+import { CueScopeInstallSection } from "@/components/cuescope-install-section"
+import { CueScopeLaunchFab } from "@/components/cuescope-launch-fab"
 
-const cuePilotScreenshot = "/images/products/cuepilot-review-mode-dashboard.png"
+const cueScopeScreenshot = "/images/products/cuescope-review-mode-dashboard.png"
+const cueScopeSupportUrl = "https://buy.stripe.com/cNi00j7xK5ZzaWS4s19sk01"
 
 export const metadata: Metadata = {
-  title: "CuePilot MCP",
+  title: "CueScope",
   description:
-    "Read-first production intelligence for vMix from Greenhouse Labs. Review Mode inspects, explains, diagnoses, and plans before anything changes in vMix.",
+    "CueScope is a read-first MCP server that gives AI assistants safe production intelligence for workflows compatible with vMix.",
   alternates: {
-    canonical: "/products/cuepilot-mcp",
+    canonical: "/products/cuescope-mcp",
   },
   openGraph: {
-    title: "CuePilot MCP | Greenhouse Labs",
+    title: "CueScope | Greenhouse Labs",
     description:
-      "Read-first production intelligence for vMix. Inspect state, diagnose show risks, review scripts, and generate safer automation plans before control.",
-    url: "/products/cuepilot-mcp",
+      "Read-first production intelligence for workflows compatible with vMix. Inspect state, diagnose show risks, review scripts, and generate safer automation plans before control.",
+    url: "/products/cuescope-mcp",
     images: [
       {
-        url: cuePilotScreenshot,
+        url: cueScopeScreenshot,
         width: 1920,
         height: 1080,
-        alt: "CuePilot MCP in Review Mode reading vMix state inside an MCP client.",
+        alt: "CueScope in Review Mode reading vMix state inside an MCP client.",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "CuePilot MCP | Greenhouse Labs",
+    title: "CueScope | Greenhouse Labs",
     description:
-      "Read-first production intelligence for vMix. Review, diagnose, and plan before anything changes.",
-    images: [cuePilotScreenshot],
+      "Read-first production intelligence for workflows compatible with vMix. Review, diagnose, and plan before anything changes.",
+    images: [cueScopeScreenshot],
   },
 }
 
@@ -91,21 +93,21 @@ const safetyModes = [
     mode: "Review Mode",
     status: "Default",
     description:
-      "Reads state, explains setup, diagnoses risks, validates scripts, and produces checklists or automation plans. It does not mutate vMix.",
+      "Exposes 18 review-only tools to read state, explain setup, diagnose risks, validate scripts, and produce checklists or automation plans. It does not mutate vMix.",
     icon: Eye,
   },
   {
     mode: "Control Mode",
     status: "Explicit opt-in",
     description:
-      "Exposes safer live-control tools only when the operator sets VMIX_CONTROL_MODE=true in the MCP client environment.",
+      "Unlocks gated control tools only when the operator sets VMIX_CONTROL_MODE=true in the MCP client environment.",
     icon: Wrench,
   },
   {
     mode: "High-Impact Control",
     status: "Second gate",
     description:
-      "Requires VMIX_CONTROL_MODE=true and VMIX_HIGH_IMPACT=true for scripts, batch commands, streaming, recording, presets, output routing, and destructive changes.",
+      "Requires VMIX_CONTROL_MODE=true and VMIX_HIGH_IMPACT=true for scripts, batch commands, recording, streaming, presets, output routing, destructive input changes, show-building, and replay recording.",
     icon: Lock,
   },
 ]
@@ -113,7 +115,7 @@ const safetyModes = [
 const workflows = [
   {
     title: "Pre-show review",
-    body: "Ask CuePilot to explain the current preset, identify active and preview paths, summarize graphics and audio state, and call out anything worth checking before rehearsal.",
+    body: "Ask CueScope to explain the current preset, identify active and preview paths, summarize graphics and audio state, and call out anything worth checking before rehearsal.",
   },
   {
     title: "Audio and mix-minus diagnosis",
@@ -149,48 +151,49 @@ const audiences = [
 const launchItems = [
   {
     label: "Product page",
-    value: "Friday launch",
-    detail: "The Greenhouse Labs launch page can go public with email capture and setup preview.",
+    value: "Public release pending",
+    detail: "The Greenhouse Labs launch page is ready with email capture, support, and setup preview.",
   },
   {
     label: "GitHub repository",
     value: "Private for now",
-    detail: "Visibility will change as part of the coordinated public launch.",
+    detail: "The repository will be published at github.com/greenhouselabs/cuescope-mcp when release is ready.",
   },
   {
     label: "npm package",
     value: "Not published yet",
-    detail: "@greenhouselabs/cuepilot-mcp will be announced when install is ready.",
+    detail: "@greenhouselabs/cuescope-mcp will be announced when install is ready.",
   },
 ]
 
 const installStatus = [
   "Inline setup is visible now as a release-preview reference.",
-  "Commands become usable only after @greenhouselabs/cuepilot-mcp is published to npm.",
+  "Commands become usable only after @greenhouselabs/cuescope-mcp is published to npm.",
   "GitHub visibility and npm publication remain coordinated release steps.",
-  "Review Mode will be the recommended first-run experience.",
+  "Review Mode is the recommended first-run experience with 18 review-only tools.",
+  "The server has 135 known tools, with control and high-impact tools hidden behind explicit gates.",
 ]
 
 const faqs = [
   {
-    question: "Is CuePilot MCP open source?",
+    question: "Is CueScope open source?",
     answer:
-      "No. CuePilot MCP is source-available under the CuePilot Source-Available License. Greenhouse Ventures LLC is the legal owner and licensor, and Greenhouse Labs is the public brand.",
+      "No. CueScope is source-available under the CueScope Source-Available License. Greenhouse Ventures LLC is the legal owner and licensor, and Greenhouse Labs is the public brand.",
   },
   {
     question: "Does it control vMix?",
     answer:
-      "Not by default. Review Mode is the default mode and is designed to inspect, explain, diagnose, validate, and plan. Direct control requires explicit environment-variable opt-in, and high-impact control requires a second gate.",
+      "Not by default. Review Mode is the default and does not mutate vMix. Direct control requires VMIX_CONTROL_MODE=true, and high-impact actions require VMIX_HIGH_IMPACT=true as a second gate.",
   },
   {
     question: "Does it expose secrets?",
     answer:
-      "CuePilot is designed to redact sensitive values from preset and log-derived output, including stream keys, tokens, passwords, and vMix Call secrets. Operators should still avoid exposing vMix Web Controller to the public internet and should review any shared logs or presets carefully.",
+      "CueScope is designed to redact sensitive values from preset and log-derived output, including stream keys, tokens, passwords, and vMix Call secrets. Operators should still avoid exposing vMix Web Controller to the public internet and should review any shared logs or presets carefully.",
   },
   {
     question: "Is this affiliated with vMix?",
     answer:
-      "No. CuePilot MCP is an independent Greenhouse Labs integration for vMix workflows. It is not affiliated with, endorsed by, or sponsored by vMix or StudioCoast Pty Ltd.",
+      "No. CueScope is independent software from Greenhouse Labs and Greenhouse Ventures LLC. It is not affiliated with, endorsed by, or sponsored by vMix or StudioCoast Pty Ltd.",
   },
 ]
 
@@ -204,29 +207,29 @@ function ProductBackdrop() {
   )
 }
 
-function CuePilotProductScreenshot() {
+function CueScopeProductScreenshot() {
   return (
     <figure className="mx-auto mt-10 max-w-6xl overflow-hidden rounded-lg border border-white/10 bg-neutral-950/80 text-left shadow-2xl shadow-emerald-950/20">
       <Image
-        src={cuePilotScreenshot}
-        alt="CuePilot MCP in Review Mode reading vMix server status and state summary inside an MCP client."
+        src={cueScopeScreenshot}
+        alt="CueScope in Review Mode reading vMix server status and state summary inside an MCP client."
         width={1920}
         height={1080}
         priority
         className="h-auto w-full"
       />
       <figcaption className="border-t border-white/10 px-4 py-3 text-xs leading-5 text-neutral-400">
-        CuePilot MCP reading live vMix state in Review Mode before any control
+        CueScope reading live vMix state in Review Mode before any control
         tools are enabled.
       </figcaption>
     </figure>
   )
 }
 
-export default function CuePilotProductPage() {
+export default function CueScopeProductPage() {
   return (
     <div>
-      <CuePilotLaunchFab />
+      <CueScopeLaunchFab />
       <section className="relative isolate overflow-hidden border-b border-white/10 px-6 py-20 sm:py-24 lg:py-28">
         <ProductBackdrop />
         <div className="mx-auto max-w-5xl text-center">
@@ -234,16 +237,17 @@ export default function CuePilotProductPage() {
             variant="outline"
             className="mb-5 border-emerald-400/40 bg-emerald-500/10 text-emerald-200"
           >
-            Launches Friday
+            Public release pending
           </Badge>
           <h1 className="text-5xl font-semibold tracking-tight sm:text-6xl lg:text-7xl">
-            CuePilot MCP
+            CueScope
           </h1>
           <p className="mx-auto mt-5 max-w-3xl text-xl leading-8 text-neutral-200 sm:text-2xl">
-            Read-first production intelligence for vMix.
+            Read-first production intelligence for workflows compatible with
+            vMix.
           </p>
           <p className="mx-auto mt-5 max-w-3xl text-base leading-7 text-neutral-300 sm:text-lg">
-            CuePilot MCP helps AI assistants inspect vMix state, explain live
+            CueScope helps AI assistants inspect vMix state, explain live
             shows, diagnose routing and output risks, review scripts, and
             generate automation plans before anything changes in vMix.
           </p>
@@ -252,25 +256,41 @@ export default function CuePilotProductPage() {
             className="mt-8"
             formClassName="mx-auto flex max-w-xl flex-col gap-2 sm:flex-row"
             placeholder="operator@studio.com"
-            source="cuepilot-mcp"
-            successMessage="You're on the CuePilot MCP launch list."
-            tags={["cuepilot-mcp", "launch-list"]}
+            source="cuescope-mcp"
+            successMessage="You're on the CueScope launch list."
+            tags={["cuescope-mcp", "launch-list"]}
           />
           <div className="mt-4 flex justify-center">
-            <Button
-              size="lg"
-              variant="outline"
-              className="w-full rounded-lg border-white/10 hover:bg-white/10 sm:w-auto"
-              asChild
-            >
-              <Link href="#safety-model">
-                Review Safety Model
-                <ShieldCheck className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
+            <div className="flex w-full flex-col justify-center gap-3 sm:w-auto sm:flex-row">
+              <Button
+                size="lg"
+                className="rounded-lg bg-emerald-400 text-neutral-950 hover:bg-emerald-300"
+                asChild
+              >
+                <a
+                  href={cueScopeSupportUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Support CueScope
+                  <CircleDollarSign className="ml-2 h-4 w-4" />
+                </a>
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="rounded-lg border-white/10 hover:bg-white/10"
+                asChild
+              >
+                <Link href="#safety-model">
+                  Review Safety Model
+                  <ShieldCheck className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
           </div>
-          <CuePilotProductScreenshot />
-          <div className="mx-auto mt-10 grid max-w-3xl gap-3 text-left sm:grid-cols-3">
+          <CueScopeProductScreenshot />
+          <div className="mx-auto mt-10 grid max-w-4xl gap-3 text-left sm:grid-cols-2 lg:grid-cols-4">
             <div className="rounded-lg border border-white/10 bg-neutral-950/70 p-4">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500">
                 Default
@@ -281,13 +301,23 @@ export default function CuePilotProductPage() {
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500">
                 Package
               </p>
-              <p className="mt-2 text-sm text-neutral-200">Coming at launch</p>
+              <p className="mt-2 break-words font-mono text-sm text-neutral-200">
+                @greenhouselabs/cuescope-mcp
+              </p>
             </div>
             <div className="rounded-lg border border-white/10 bg-neutral-950/70 p-4">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500">
                 License
               </p>
               <p className="mt-2 text-sm text-neutral-200">Source-available</p>
+            </div>
+            <div className="rounded-lg border border-white/10 bg-neutral-950/70 p-4">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500">
+                Status
+              </p>
+              <p className="mt-2 text-sm text-neutral-200">
+                Public release pending
+              </p>
             </div>
           </div>
         </div>
@@ -300,7 +330,7 @@ export default function CuePilotProductPage() {
               variant="outline"
               className="mb-4 border-cyan-400/30 text-cyan-200"
             >
-              Friday launch
+              Public release pending
             </Badge>
             <h2 className="text-3xl font-semibold tracking-tight">
               Prepared before the public switch flips
@@ -316,9 +346,9 @@ export default function CuePilotProductPage() {
               className="mt-6"
               formClassName="flex flex-col gap-2 sm:flex-row lg:flex-col"
               placeholder="you@production.team"
-              source="cuepilot-mcp"
-              successMessage="You're on the CuePilot MCP launch list."
-              tags={["cuepilot-mcp", "launch-list"]}
+              source="cuescope-mcp"
+              successMessage="You're on the CueScope launch list."
+              tags={["cuescope-mcp", "launch-list"]}
             />
             <div className="mt-3 flex flex-col gap-3 sm:flex-row lg:flex-col">
               <Button
@@ -326,10 +356,14 @@ export default function CuePilotProductPage() {
                 className="rounded-lg border-white/10 hover:bg-white/10"
                 asChild
               >
-                <Link href="/contact?interest=cuepilot-mcp-support">
-                  Support Development
-                  <CircleDollarSign className="ml-2 h-4 w-4" />
-                </Link>
+                <a
+                  href={cueScopeSupportUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Support CueScope
+                  <HeartHandshake className="ml-2 h-4 w-4" />
+                </a>
               </Button>
             </div>
           </div>
@@ -368,7 +402,7 @@ export default function CuePilotProductPage() {
               Understand the show before changing the show
             </h2>
             <p className="mt-4 text-sm leading-6 text-neutral-300 sm:text-base">
-              CuePilot MCP connects AI assistants to vMix state and curated
+              CueScope connects AI assistants to vMix state and curated
               production knowledge so operators can ask better questions before
               a rehearsal, stream, recording, or client show.
             </p>
@@ -409,9 +443,12 @@ export default function CuePilotProductPage() {
               Review first. Control only by explicit opt-in.
             </h2>
             <p className="mt-4 text-sm leading-6 text-neutral-300 sm:text-base">
-              CuePilot is built for safer AI-assisted production workflows.
-              The default experience keeps the assistant in an advisory role
-              and makes control boundaries visible.
+              CueScope starts in Review Mode, exposing 18 review-only tools for
+              inspection, diagnosis, validation, and planning. Safer control
+              tools require VMIX_CONTROL_MODE=true, and high-impact actions
+              such as scripts, batch commands, recording, streaming, presets,
+              output routing, destructive input changes, show-building, and
+              replay recording require VMIX_HIGH_IMPACT=true as a second gate.
             </p>
           </div>
           <ShieldCheck className="hidden h-10 w-10 text-emerald-300 sm:block" />
@@ -446,7 +483,7 @@ export default function CuePilotProductPage() {
         </div>
       </section>
 
-      <CuePilotInstallSection />
+      <CueScopeInstallSection />
 
       <section className="border-y border-white/10 bg-neutral-900/25">
         <div className="mx-auto max-w-7xl px-6 py-16">
@@ -463,7 +500,7 @@ export default function CuePilotProductPage() {
                 feels off
               </h2>
               <p className="mt-4 text-sm leading-6 text-neutral-300 sm:text-base">
-                CuePilot is strongest when a user asks for inspection,
+                CueScope is strongest when a user asks for inspection,
                 explanation, diagnosis, or a reviewable plan. It can help a
                 team turn a messy vMix setup into a checklist the operator can
                 trust.
@@ -504,7 +541,7 @@ export default function CuePilotProductPage() {
               Production people who need clarity under pressure
             </h2>
             <p className="mt-4 text-sm leading-6 text-neutral-300 sm:text-base">
-              CuePilot is for operators and builders who already know vMix is
+              CueScope is for operators and builders who already know vMix is
               powerful, but want an AI assistant that can read the show,
               respect the control boundary, and produce reviewable next steps.
             </p>
@@ -554,7 +591,7 @@ export default function CuePilotProductPage() {
             <p className="mt-3 text-sm leading-6 text-neutral-400">
               The source may be made available for review, learning,
               verification, debugging, and private internal modification under
-              the CuePilot Source-Available License.
+              the CueScope Source-Available License.
             </p>
           </article>
           <article className="rounded-lg border border-white/10 bg-neutral-950/50 p-6">
@@ -570,9 +607,10 @@ export default function CuePilotProductPage() {
             <Radio className="mb-4 h-6 w-6 text-amber-200" />
             <h3 className="text-lg font-semibold">Independent integration</h3>
             <p className="mt-3 text-sm leading-6 text-neutral-400">
-              CuePilot MCP integrates with vMix workflows through documented
-              local interfaces. It is not affiliated with, endorsed by, or
-              sponsored by vMix or StudioCoast Pty Ltd.
+              CueScope is independent software for workflows compatible with
+              vMix. It is not affiliated with, endorsed by, or sponsored by
+              vMix or StudioCoast Pty Ltd. vMix is a trademark of its
+              respective owner.
             </p>
           </article>
         </div>
@@ -609,7 +647,7 @@ export default function CuePilotProductPage() {
         <div className="rounded-lg border border-emerald-500/20 bg-emerald-950/20 p-8">
           <Sparkles className="mx-auto mb-4 h-8 w-8 text-emerald-300" />
           <h2 className="text-2xl font-semibold tracking-tight">
-            Follow the CuePilot MCP launch
+            Follow the CueScope launch
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-neutral-300">
             Join the launch list for availability updates, early notes, and
@@ -620,9 +658,9 @@ export default function CuePilotProductPage() {
             className="mt-6"
             formClassName="mx-auto flex max-w-xl flex-col justify-center gap-2 sm:flex-row"
             placeholder="you@studio.com"
-            source="cuepilot-mcp"
-            successMessage="You're on the CuePilot MCP launch list."
-            tags={["cuepilot-mcp", "launch-list"]}
+            source="cuescope-mcp"
+            successMessage="You're on the CueScope launch list."
+            tags={["cuescope-mcp", "launch-list"]}
           />
           <div className="mt-4 flex justify-center">
             <Button

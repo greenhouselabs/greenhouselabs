@@ -5,7 +5,8 @@ import { BadgeCheck, CheckCircle2, ShieldCheck, TerminalSquare } from "lucide-re
 import { Badge } from "@/components/ui/badge"
 
 const packageFacts = [
-  { label: "Package", value: "@greenhouselabs/cuepilot-mcp" },
+  { label: "Package", value: "@greenhouselabs/cuescope-mcp" },
+  { label: "Binary", value: "cuescope-mcp" },
   { label: "Version", value: "1.0.0" },
   { label: "Runtime", value: "Node.js 20+" },
   { label: "Default Mode", value: "Review Mode" },
@@ -38,9 +39,9 @@ const setupTabs = [
     note: "Use this shape for MCP clients that read a server configuration file once the package is published.",
     code: `{
   "mcpServers": {
-    "vmix": {
+    "cuescope": {
       "command": "npx",
-      "args": ["-y", "@greenhouselabs/cuepilot-mcp"],
+      "args": ["-y", "@greenhouselabs/cuescope-mcp"],
       "env": {
         "VMIX_HOST": "localhost",
         "VMIX_HTTP_PORT": "8088",
@@ -55,14 +56,14 @@ const setupTabs = [
     label: "Claude Code",
     language: "bash",
     note: "Claude Code can add the published package as an MCP server with npx.",
-    code: "claude mcp add vmix -- npx -y @greenhouselabs/cuepilot-mcp",
+    code: "claude mcp add cuescope -- npx -y @greenhouselabs/cuescope-mcp",
   },
   {
     id: "codex",
     label: "Codex",
     language: "bash",
-    note: "Codex CLI can add the same published package as a vMix MCP server.",
-    code: "codex mcp add vmix -- npx -y @greenhouselabs/cuepilot-mcp",
+    note: "Codex CLI can add the same published package as a CueScope MCP server.",
+    code: "codex mcp add cuescope -- npx -y @greenhouselabs/cuescope-mcp",
   },
   {
     id: "windows",
@@ -71,9 +72,9 @@ const setupTabs = [
     note: "On Windows, Claude Desktop often needs cmd /c npx instead of calling npx directly.",
     code: `{
   "mcpServers": {
-    "vmix": {
+    "cuescope": {
       "command": "cmd",
-      "args": ["/c", "npx", "-y", "@greenhouselabs/cuepilot-mcp"],
+      "args": ["/c", "npx", "-y", "@greenhouselabs/cuescope-mcp"],
       "env": {
         "VMIX_HOST": "localhost",
         "VMIX_HTTP_PORT": "8088",
@@ -89,19 +90,19 @@ const setupTabs = [
     language: "bash",
     note: "For vMix running on another trusted machine, set VMIX_HOST to that LAN host or IP.",
     code:
-      "claude mcp add vmix -e VMIX_HOST=192.168.1.100 -- npx -y @greenhouselabs/cuepilot-mcp\n" +
-      "codex mcp add vmix --env VMIX_HOST=192.168.1.100 -- npx -y @greenhouselabs/cuepilot-mcp",
+      "claude mcp add cuescope -e VMIX_HOST=192.168.1.100 -- npx -y @greenhouselabs/cuescope-mcp\n" +
+      "codex mcp add cuescope --env VMIX_HOST=192.168.1.100 -- npx -y @greenhouselabs/cuescope-mcp",
   },
 ]
 
 const smokeTestPrompt =
-  "Use the vMix MCP. Read vmix://server/status and vmix://state/summary. Do not control vMix yet."
+  "Use CueScope. Read vmix://server/status and vmix://state/summary. Do not control vMix yet."
 
 const smokeTestExpected = [
   "server reports Review Mode",
   "controlMode is false",
   "highImpactMode is false",
-  "review tools only",
+  "18 review-only tools are available by default",
   "vmix://state/summary returns current vMix state",
   "no live-control tool is called",
 ]
@@ -122,7 +123,7 @@ function CodeBlock({
   )
 }
 
-export function CuePilotInstallSection() {
+export function CueScopeInstallSection() {
   const [activeTabId, setActiveTabId] = useState("claude-desktop")
   const activeTab =
     setupTabs.find((tab) => tab.id === activeTabId) || setupTabs[0]
@@ -139,12 +140,12 @@ export function CuePilotInstallSection() {
               Available at public launch
             </Badge>
             <h2 className="text-3xl font-semibold tracking-tight">
-              Install CuePilot MCP
+              Install CueScope
             </h2>
             <p className="mt-4 text-sm leading-6 text-neutral-300 sm:text-base">
-              CuePilot installs as an MCP package once{" "}
+              CueScope installs as an MCP package once{" "}
               <span className="break-words font-mono text-emerald-200">
-                @greenhouselabs/cuepilot-mcp
+                @greenhouselabs/cuescope-mcp
               </span>{" "}
               is public on npm. Until then, these documented commands are shown
               as release-preview setup references.
@@ -227,7 +228,7 @@ export function CuePilotInstallSection() {
               <div
                 className="mb-4 flex min-w-0 gap-1.5 overflow-x-auto pb-1"
                 role="tablist"
-                aria-label="CuePilot MCP setup options"
+                aria-label="CueScope setup options"
               >
                 {setupTabs.map((tab) => {
                   const isActive = tab.id === activeTab.id
@@ -238,8 +239,8 @@ export function CuePilotInstallSection() {
                       type="button"
                       role="tab"
                       aria-selected={isActive}
-                      aria-controls={`cuepilot-install-${tab.id}`}
-                      id={`cuepilot-install-tab-${tab.id}`}
+                      aria-controls={`cuescope-install-${tab.id}`}
+                      id={`cuescope-install-tab-${tab.id}`}
                       onClick={() => setActiveTabId(tab.id)}
                       className={`shrink-0 rounded-md border px-2.5 py-1.5 text-xs font-medium transition-colors ${
                         isActive
@@ -254,9 +255,9 @@ export function CuePilotInstallSection() {
               </div>
 
               <div
-                id={`cuepilot-install-${activeTab.id}`}
+                id={`cuescope-install-${activeTab.id}`}
                 role="tabpanel"
-                aria-labelledby={`cuepilot-install-tab-${activeTab.id}`}
+                aria-labelledby={`cuescope-install-tab-${activeTab.id}`}
                 className="min-w-0"
               >
                 <div className="mb-3 flex min-w-0 flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">

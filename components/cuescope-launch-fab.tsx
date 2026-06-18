@@ -4,7 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 import { Mail, X } from "lucide-react"
 
-export function CuePilotLaunchFab() {
+export function CueScopeLaunchFab() {
   const [dismissed, setDismissed] = useState(false)
 
   if (dismissed) {
@@ -23,10 +23,10 @@ export function CuePilotLaunchFab() {
           </span>
           <span className="min-w-0">
             <span className="block text-xs font-semibold uppercase tracking-[0.18em] text-emerald-200">
-              Goes live Friday, June 19
+              Public release pending
             </span>
             <span className="mt-1 block text-sm text-neutral-200 group-hover:text-white">
-              Sign up for CuePilot updates
+              Sign up for CueScope updates
             </span>
           </span>
         </Link>
