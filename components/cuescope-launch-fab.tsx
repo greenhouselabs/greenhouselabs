@@ -23,7 +23,7 @@ export function CueScopeLaunchFab() {
           </span>
           <span className="min-w-0">
             <span className="block text-xs font-semibold uppercase tracking-[0.18em] text-emerald-200">
-              Public release pending
+              Available on npm
             </span>
             <span className="mt-1 block text-sm text-neutral-200 group-hover:text-white">
               Sign up for CueScope updates

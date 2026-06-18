@@ -5,15 +5,16 @@ import {
   BadgeCheck,
   BookOpen,
   CheckCircle2,
-  CircleDollarSign,
   Code2,
   Eye,
   FileSearch,
+  Github,
   GitBranch,
   Headphones,
   HeartHandshake,
   Lock,
   Monitor,
+  Package,
   Radio,
   ShieldCheck,
   Sparkles,
@@ -29,18 +30,23 @@ import { CueScopeLaunchFab } from "@/components/cuescope-launch-fab"
 
 const cueScopeScreenshot = "/images/products/cuescope-review-mode-dashboard.png"
 const cueScopeSupportUrl = "https://buy.stripe.com/cNi00j7xK5ZzaWS4s19sk01"
+const cueScopeNpmUrl =
+  "https://www.npmjs.com/package/@greenhouselabs/cuescope-mcp"
+const cueScopeGithubUrl = "https://github.com/greenhouselabs/cuescope-mcp"
+const cueScopeReleaseUrl =
+  "https://github.com/greenhouselabs/cuescope-mcp/releases/tag/v1.0.1"
 
 export const metadata: Metadata = {
   title: "CueScope",
   description:
-    "CueScope is a read-first MCP server that gives AI assistants safe production intelligence for workflows compatible with vMix.",
+    "CueScope is a read-first MCP server that gives AI assistants safe production intelligence for workflows compatible with vMix. Available now on npm.",
   alternates: {
     canonical: "/products/cuescope-mcp",
   },
   openGraph: {
     title: "CueScope | Greenhouse Labs",
     description:
-      "Read-first production intelligence for workflows compatible with vMix. Inspect state, diagnose show risks, review scripts, and generate safer automation plans before control.",
+      "Read-first production intelligence for workflows compatible with vMix. Available now on npm with full public launch June 19, 2026.",
     url: "/products/cuescope-mcp",
     images: [
       {
@@ -56,7 +62,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "CueScope | Greenhouse Labs",
     description:
-      "Read-first production intelligence for workflows compatible with vMix. Review, diagnose, and plan before anything changes.",
+      "Read-first production intelligence for workflows compatible with vMix. Available now on npm.",
     images: [cueScopeScreenshot],
   },
 }
@@ -150,26 +156,32 @@ const audiences = [
 
 const launchItems = [
   {
-    label: "Product page",
-    value: "Public release pending",
-    detail: "The Greenhouse Labs launch page is ready with email capture, support, and setup preview.",
+    label: "Package",
+    value: "@greenhouselabs/cuescope-mcp@1.0.1",
+    detail: "Published on npm for MCP client setup.",
+  },
+  {
+    label: "Status",
+    value: "Available on npm",
+    detail: "Full public launch is June 19, 2026. Live demo coming soon.",
   },
   {
     label: "GitHub repository",
-    value: "Private for now",
-    detail: "The repository will be published at github.com/greenhouselabs/cuescope-mcp when release is ready.",
+    value: "Public",
+    detail: "The source-available repository is public for review, setup guidance, and issue tracking.",
   },
   {
-    label: "npm package",
-    value: "Not published yet",
-    detail: "@greenhouselabs/cuescope-mcp will be announced when install is ready.",
+    label: "Release",
+    value: "v1.0.1",
+    detail: "The current GitHub release is available for launch review.",
   },
 ]
 
 const installStatus = [
-  "Inline setup is visible now as a release-preview reference.",
-  "Commands become usable only after @greenhouselabs/cuescope-mcp is published to npm.",
-  "GitHub visibility and npm publication remain coordinated release steps.",
+  "Published on npm as @greenhouselabs/cuescope-mcp@1.0.1.",
+  "The source-available GitHub repository is public for review, setup guidance, and issue tracking.",
+  "GitHub release v1.0.1 is available for launch review.",
+  "Live demo coming soon.",
   "Review Mode is the recommended first-run experience with 18 review-only tools.",
   "The server has 135 known tools, with control and high-impact tools hidden behind explicit gates.",
 ]
@@ -237,7 +249,7 @@ export default function CueScopeProductPage() {
             variant="outline"
             className="mb-5 border-emerald-400/40 bg-emerald-500/10 text-emerald-200"
           >
-            Public release pending
+            Available on npm. Full public launch June 19, 2026.
           </Badge>
           <h1 className="text-5xl font-semibold tracking-tight sm:text-6xl lg:text-7xl">
             CueScope
@@ -250,30 +262,65 @@ export default function CueScopeProductPage() {
             CueScope helps AI assistants inspect vMix state, explain live
             shows, diagnose routing and output risks, review scripts, and
             generate automation plans before anything changes in vMix.
+            Available now on npm as{" "}
+            <span className="font-mono text-emerald-200">
+              @greenhouselabs/cuescope-mcp@1.0.1
+            </span>
+            . Live demo coming soon.
           </p>
           <NewsletterForm
-            buttonLabel="Email Me at Launch"
+            buttonLabel="Join CueScope Updates"
             className="mt-8"
             formClassName="mx-auto flex max-w-xl flex-col gap-2 sm:flex-row"
             placeholder="operator@studio.com"
             source="cuescope-mcp"
-            successMessage="You're on the CueScope launch list."
+            successMessage="You're on the CueScope updates list."
             tags={["cuescope-mcp", "launch-list"]}
           />
           <div className="mt-4 flex justify-center">
-            <div className="flex w-full flex-col justify-center gap-3 sm:w-auto sm:flex-row">
+            <div className="flex w-full flex-col justify-center gap-3 sm:w-auto sm:flex-row sm:flex-wrap">
               <Button
                 size="lg"
                 className="rounded-lg bg-emerald-400 text-neutral-950 hover:bg-emerald-300"
                 asChild
               >
                 <a
-                  href={cueScopeSupportUrl}
+                  href={cueScopeNpmUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Support CueScope
-                  <CircleDollarSign className="ml-2 h-4 w-4" />
+                  View on npm
+                  <Package className="ml-2 h-4 w-4" />
+                </a>
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="rounded-lg border-white/10 hover:bg-white/10"
+                asChild
+              >
+                <a
+                  href={cueScopeGithubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View GitHub
+                  <Github className="ml-2 h-4 w-4" />
+                </a>
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="rounded-lg border-white/10 hover:bg-white/10"
+                asChild
+              >
+                <a
+                  href={cueScopeReleaseUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View Release
+                  <GitBranch className="ml-2 h-4 w-4" />
                 </a>
               </Button>
               <Button
@@ -302,7 +349,7 @@ export default function CueScopeProductPage() {
                 Package
               </p>
               <p className="mt-2 break-words font-mono text-sm text-neutral-200">
-                @greenhouselabs/cuescope-mcp
+                @greenhouselabs/cuescope-mcp@1.0.1
               </p>
             </div>
             <div className="rounded-lg border border-white/10 bg-neutral-950/70 p-4">
@@ -316,7 +363,7 @@ export default function CueScopeProductPage() {
                 Status
               </p>
               <p className="mt-2 text-sm text-neutral-200">
-                Public release pending
+                Available on npm
               </p>
             </div>
           </div>
@@ -330,27 +377,68 @@ export default function CueScopeProductPage() {
               variant="outline"
               className="mb-4 border-cyan-400/30 text-cyan-200"
             >
-              Public release pending
+              Available on npm
             </Badge>
             <h2 className="text-3xl font-semibold tracking-tight">
-              Prepared before the public switch flips
+              Available now, launching publicly June 19, 2026
             </h2>
             <p className="mt-4 text-sm leading-6 text-neutral-300 sm:text-base">
-              The page is being prepared first so the public launch can
-              coordinate the product story, GitHub visibility, npm package, and
-              support channels without implying the package is installable
-              early.
+              CueScope is published on npm and the source-available GitHub
+              repository is public for review, setup guidance, and issue
+              tracking. The full
+              public launch is June 19, 2026, with a live demo coming soon.
             </p>
             <NewsletterForm
-              buttonLabel="Get Updates"
+              buttonLabel="Get CueScope Updates"
               className="mt-6"
               formClassName="flex flex-col gap-2 sm:flex-row lg:flex-col"
               placeholder="you@production.team"
               source="cuescope-mcp"
-              successMessage="You're on the CueScope launch list."
+              successMessage="You're on the CueScope updates list."
               tags={["cuescope-mcp", "launch-list"]}
             />
             <div className="mt-3 flex flex-col gap-3 sm:flex-row lg:flex-col">
+              <Button
+                className="rounded-lg bg-emerald-400 text-neutral-950 hover:bg-emerald-300"
+                asChild
+              >
+                <a
+                  href={cueScopeNpmUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Open npm Package
+                  <Package className="ml-2 h-4 w-4" />
+                </a>
+              </Button>
+              <Button
+                variant="outline"
+                className="rounded-lg border-white/10 hover:bg-white/10"
+                asChild
+              >
+                <a
+                  href={cueScopeGithubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Open GitHub Repository
+                  <Github className="ml-2 h-4 w-4" />
+                </a>
+              </Button>
+              <Button
+                variant="outline"
+                className="rounded-lg border-white/10 hover:bg-white/10"
+                asChild
+              >
+                <a
+                  href={cueScopeReleaseUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Open v1.0.1 Release
+                  <GitBranch className="ml-2 h-4 w-4" />
+                </a>
+              </Button>
               <Button
                 variant="outline"
                 className="rounded-lg border-white/10 hover:bg-white/10"
@@ -368,7 +456,7 @@ export default function CueScopeProductPage() {
             </div>
           </div>
 
-          <div className="grid gap-4 md:grid-cols-3">
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {launchItems.map((item) => (
               <article
                 key={item.label}
@@ -377,7 +465,7 @@ export default function CueScopeProductPage() {
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500">
                   {item.label}
                 </p>
-                <h3 className="mt-3 text-lg font-semibold text-white">
+                <h3 className="mt-3 break-words text-lg font-semibold text-white">
                   {item.value}
                 </h3>
                 <p className="mt-2 text-sm leading-6 text-neutral-400">
@@ -564,10 +652,10 @@ export default function CueScopeProductPage() {
                 <TerminalSquare className="h-5 w-5" />
               </div>
               <div>
-                <h3 className="font-semibold">Status at launch prep</h3>
+                <h3 className="font-semibold">Launch status</h3>
                 <p className="text-sm text-neutral-400">
-                  Setup details are visible, but install availability is not
-                  live yet.
+                  Setup details are live, npm install is available now, and a
+                  demo is coming soon.
                 </p>
               </div>
             </div>
@@ -589,7 +677,7 @@ export default function CueScopeProductPage() {
             <GitBranch className="mb-4 h-6 w-6 text-emerald-300" />
             <h3 className="text-lg font-semibold">Source-available</h3>
             <p className="mt-3 text-sm leading-6 text-neutral-400">
-              The source may be made available for review, learning,
+              The source is available for review, learning,
               verification, debugging, and private internal modification under
               the CueScope Source-Available License.
             </p>
@@ -625,7 +713,7 @@ export default function CueScopeProductPage() {
             FAQ
           </Badge>
           <h2 className="text-3xl font-semibold tracking-tight">
-            Practical answers before launch
+            Practical answers for launch
           </h2>
         </div>
         <div className="mt-10 divide-y divide-white/10 rounded-lg border border-white/10 bg-neutral-900/40">
@@ -650,16 +738,16 @@ export default function CueScopeProductPage() {
             Follow the CueScope launch
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-neutral-300">
-            Join the launch list for availability updates, early notes, and
-            official setup details when the GitHub and npm release are ready.
+            Join CueScope updates for release notes, setup guidance, and demo
+            availability.
           </p>
           <NewsletterForm
-            buttonLabel="Join Launch List"
+            buttonLabel="Join CueScope Updates"
             className="mt-6"
             formClassName="mx-auto flex max-w-xl flex-col justify-center gap-2 sm:flex-row"
             placeholder="you@studio.com"
             source="cuescope-mcp"
-            successMessage="You're on the CueScope launch list."
+            successMessage="You're on the CueScope updates list."
             tags={["cuescope-mcp", "launch-list"]}
           />
           <div className="mt-4 flex justify-center">

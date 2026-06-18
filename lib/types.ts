@@ -29,6 +29,8 @@ export interface ProjectFrontmatter {
     doc?: string
     purchase?: string
     demo?: string
+    npm?: string
+    release?: string
   }
   offer?: {
     type: "product" | "service" | "case-study"

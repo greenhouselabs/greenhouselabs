@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge"
 const packageFacts = [
   { label: "Package", value: "@greenhouselabs/cuescope-mcp" },
   { label: "Binary", value: "cuescope-mcp" },
-  { label: "Version", value: "1.0.0" },
+  { label: "Version", value: "1.0.1" },
   { label: "Runtime", value: "Node.js 20+" },
   { label: "Default Mode", value: "Review Mode" },
 ]
@@ -19,7 +19,8 @@ const setupRequirements = [
   },
   {
     label: "API reachability",
-    detail: "MCP host can reach http://localhost:8088/api/.",
+    detail:
+      "MCP host can reach the vMix Web Controller API on the configured host and port.",
   },
   {
     label: "MCP client",
@@ -36,7 +37,7 @@ const setupTabs = [
     id: "claude-desktop",
     label: "Claude Desktop / JSON",
     language: "json",
-    note: "Use this shape for MCP clients that read a server configuration file once the package is published.",
+    note: "Use this shape for MCP clients that read a server configuration file.",
     code: `{
   "mcpServers": {
     "cuescope": {
@@ -137,18 +138,18 @@ export function CueScopeInstallSection() {
               variant="outline"
               className="mb-4 border-amber-400/30 bg-amber-500/10 text-amber-200"
             >
-              Available at public launch
+              Available on npm
             </Badge>
             <h2 className="text-3xl font-semibold tracking-tight">
               Install CueScope
             </h2>
             <p className="mt-4 text-sm leading-6 text-neutral-300 sm:text-base">
-              CueScope installs as an MCP package once{" "}
+              CueScope installs as an MCP package from npm as{" "}
               <span className="break-words font-mono text-emerald-200">
                 @greenhouselabs/cuescope-mcp
-              </span>{" "}
-              is public on npm. Until then, these documented commands are shown
-              as release-preview setup references.
+              </span>
+              . Start with Review Mode, then enable control only after the
+              read-only setup is working.
             </p>
 
             <div className="mt-6 grid min-w-0 gap-3 sm:grid-cols-2">
@@ -273,7 +274,7 @@ export function CueScopeInstallSection() {
                     variant="outline"
                     className="w-fit shrink-0 border-amber-400/30 bg-amber-500/10 text-amber-200"
                   >
-                    npm pending
+                    npm live
                   </Badge>
                 </div>
                 <CodeBlock code={activeTab.code} language={activeTab.language} />

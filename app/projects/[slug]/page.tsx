@@ -5,7 +5,15 @@ import { notFound } from "next/navigation"
 import { MDXRemote } from "next-mdx-remote/rsc"
 import { Badge } from "@/components/ui/badge"
 import { getProjectBySlug, getProjectSlugs } from "@/lib/content"
-import { ArrowRight, BookOpen, CreditCard, ExternalLink, Github, MonitorPlay } from "lucide-react"
+import {
+  ArrowRight,
+  BookOpen,
+  CreditCard,
+  ExternalLink,
+  Github,
+  MonitorPlay,
+  Package,
+} from "lucide-react"
 
 interface ProjectPageProps {
   params: { slug: string }
@@ -18,6 +26,17 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: ProjectPageProps): Metadata {
   const project = getProjectBySlug(params.slug)
   if (!project) return { title: "Project Not Found" }
+
+  const isCueScope = project.frontmatter.slug === "cuescope-mcp"
+  const twitterTitle = isCueScope
+    ? "CueScope | Greenhouse Labs"
+    : `${project.frontmatter.title} | Greenhouse Labs`
+  const twitterDescription = isCueScope
+    ? "Read-first production intelligence for workflows compatible with vMix. Available now on npm."
+    : project.frontmatter.blurb
+  const twitterImage = isCueScope
+    ? "/images/products/cuescope-review-mode-dashboard.png"
+    : project.frontmatter.hero_image
 
   return {
     title: project.frontmatter.title,
@@ -40,6 +59,12 @@ export function generateMetadata({ params }: ProjectPageProps): Metadata {
             },
           ]
         : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: twitterTitle,
+      description: twitterDescription,
+      images: twitterImage ? [twitterImage] : undefined,
     },
   }
 }
@@ -69,6 +94,9 @@ export default function ProjectPage({ params }: ProjectPageProps) {
   const links = frontmatter.links || {}
   const offer = frontmatter.offer
   const offerHref = offer?.href || links.purchase || links.demo || links.live || "/contact"
+  const demoLinkLabel = links.demo?.startsWith("/products/")
+    ? "Product Page"
+    : "Demo"
 
   return (
     <div className="mx-auto max-w-7xl px-6 py-12">
@@ -126,10 +154,32 @@ export default function ProjectPage({ params }: ProjectPageProps) {
         {/* Sidebar — 1/3 */}
         <aside className="space-y-6">
           {/* Links */}
-          {(links.live || links.repo || links.doc || links.purchase || links.demo) && (
+          {(links.live || links.repo || links.doc || links.purchase || links.demo || links.npm || links.release) && (
             <div className="rounded-xl border border-white/10 bg-neutral-900/40 p-5">
               <h3 className="font-semibold mb-3">Links</h3>
               <div className="space-y-2">
+                {links.npm && (
+                  <a
+                    href={links.npm}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-sm text-neutral-300 hover:text-emerald-300 transition-colors"
+                  >
+                    <Package className="h-4 w-4" />
+                    npm Package
+                  </a>
+                )}
+                {links.release && (
+                  <a
+                    href={links.release}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-sm text-neutral-300 hover:text-emerald-300 transition-colors"
+                  >
+                    <ExternalLink className="h-4 w-4" />
+                    Release
+                  </a>
+                )}
                 {links.purchase && (
                   <a
                     href={links.purchase}
@@ -149,7 +199,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                     className="flex items-center gap-2 text-sm text-neutral-300 hover:text-emerald-300 transition-colors"
                   >
                     <MonitorPlay className="h-4 w-4" />
-                    Demo
+                    {demoLinkLabel}
                   </a>
                 )}
                 {links.live && (
