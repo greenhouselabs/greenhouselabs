@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next"
 import { getAllPosts, getAllProjects } from "@/lib/content"
 
 const BASE_URL = "https://www.greenhouselabs.io"
-const SITE_UPDATED_AT = new Date("2026-06-18")
+const SITE_UPDATED_AT = new Date("2026-06-19")
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const posts = getAllPosts()

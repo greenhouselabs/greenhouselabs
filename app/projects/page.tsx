@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import Image from "next/image"
+import { Flower2, Sprout, Wheat } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { MagneticCard } from "@/components/effects/magnetic-card"
 import { RegenerativeText } from "@/components/effects/regenerative-text"
@@ -40,16 +41,22 @@ function stageBadgeClasses(stage: string) {
   }
 }
 
-function stageEmoji(stage: string) {
+function StageIcon({
+  stage,
+  className = "h-4 w-4",
+}: {
+  stage: string
+  className?: string
+}) {
   switch (stage) {
     case "Seedling":
-      return "🌱"
+      return <Sprout aria-hidden="true" className={className} />
     case "Blooming":
-      return "🌸"
+      return <Flower2 aria-hidden="true" className={className} />
     case "Harvest":
-      return "🌾"
+      return <Wheat aria-hidden="true" className={className} />
     default:
-      return ""
+      return null
   }
 }
 
@@ -84,7 +91,7 @@ export default function ProjectsPage() {
             key={stage}
             className="flex items-center gap-2 text-sm text-neutral-400"
           >
-            <span>{stageEmoji(stage)}</span>
+            <StageIcon stage={stage} />
             <span>{stage}</span>
           </div>
         ))}
@@ -107,9 +114,10 @@ export default function ProjectsPage() {
                     className="object-cover transition-transform group-hover:scale-105"
                   />
                 ) : (
-                  <span className="text-4xl opacity-50">
-                    {stageEmoji(project.frontmatter.stage)}
-                  </span>
+                  <StageIcon
+                    stage={project.frontmatter.stage}
+                    className="h-12 w-12 opacity-50"
+                  />
                 )}
               </div>
               <div className="mt-4 flex items-center justify-between">

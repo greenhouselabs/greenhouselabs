@@ -5,7 +5,7 @@ stage: "Blooming"
 category: "AI-Assisted Live Production"
 blurb: "A read-first MCP server that gives AI assistants safe production intelligence for workflows compatible with vMix."
 tags: ["vMix", "MCP", "Live Production", "Broadcast", "AI Tools"]
-updated_at: "2026-06-18"
+updated_at: "2026-06-19"
 sort_order: 0
 featured: true
 featured_size: "2x1"
@@ -15,11 +15,11 @@ tech_stack: ["TypeScript", "Model Context Protocol", "vMix API", "Node.js", "Zod
 links:
   npm: "https://www.npmjs.com/package/@greenhouselabs/cuescope-mcp"
   repo: "https://github.com/greenhouselabs/cuescope-mcp"
-  release: "https://github.com/greenhouselabs/cuescope-mcp/releases/tag/v1.0.1"
+  release: "https://github.com/greenhouselabs/cuescope-mcp/releases/tag/v1.0.2"
   demo: "/products/cuescope-mcp"
 offer:
   type: "product"
-  status: "Available on npm. Full public launch June 19, 2026."
+  status: "Public npm launch live. v1.0.2."
   cta: "View Product Page"
   href: "/products/cuescope-mcp"
 results:
@@ -31,9 +31,9 @@ results:
     value: "Live on npm"
 ---
 
-CueScope is a source-available, read-first MCP server compatible with vMix from Greenhouse Labs. It gives AI assistants safe production intelligence for live-production workflows: inspecting vMix state, explaining presets, diagnosing audio and routing issues, reviewing scripts, generating show checklists, and producing reviewable automation plans before anything changes in vMix.
+CueScope is a source-available, read-first MCP server from Greenhouse Labs for workflows compatible with vMix. It gives AI assistants safe production intelligence for live-production workflows: inspecting live show state, explaining inputs and title fields, diagnosing audio and routing issues, reviewing saved `.vmix` presets, reviewing scripts and triggers, generating show checklists, and producing reviewable automation plans before anything changes.
 
-CueScope is available now as `@greenhouselabs/cuescope-mcp@1.0.1` on npm. The source-available GitHub repository is public for review, setup guidance, and issue tracking. A live demo is coming soon.
+CueScope is available now as `@greenhouselabs/cuescope-mcp@1.0.2` on npm. Install it with `npm install -g @greenhouselabs/cuescope-mcp`, or connect the published package directly from an MCP client with npx. The source-available GitHub repository is public for review, setup guidance, and issue tracking.
 
 ## Why It Exists
 
@@ -41,11 +41,12 @@ AI assistants can be useful in live production, but only if they understand the 
 
 ## What It Reviews
 
-- Current vMix state, inputs, active and preview paths, overlays, title fields, and tally
+- Live show state, inputs, active and preview paths, overlays, title fields, and tally
 - Audio routing, buses, mutes, solo state, vMix Call patterns, and mix-minus risks
 - Recording, streaming, external output, video path, audio path, and destination blind spots
 - Saved `.vmix` preset files, scripts, triggers, saved-vs-live drift, and redacted preset metadata
-- VB.NET scripts and API plans before they are copied into an operator workflow
+- Title/countdown metadata and title data-source bindings that operators need to verify
+- VB.NET scripts, targeted trigger/script reference summaries, and API plans before they are copied into an operator workflow
 - Connection issues, pasted logs, and safe next checks without exposing production secrets
 
 ## Safety Model
@@ -63,8 +64,15 @@ Control Mode is available only when an operator explicitly enables `VMIX_CONTROL
 - Validate a vMix VB.NET script before pasting it into vMix.
 - Compare before and after XML snapshots and summarize the production meaning of the change.
 
+## v1.0.2 Update
+
+- Live-first input inspection
+- Saved GT/title countdown metadata parsing
+- Title data-source binding detection
+- Targeted trigger/script reference summaries
+
 ## Launch Notes
 
-CueScope will launch under the Greenhouse Labs brand and is legally owned and licensed by Greenhouse Ventures LLC. It is source-available, not open source. It is independent software for workflows compatible with vMix and is not affiliated with, endorsed by, or sponsored by vMix or StudioCoast Pty Ltd. vMix is a trademark of its respective owner.
+CueScope is published under the Greenhouse Labs brand and is legally owned and licensed by Greenhouse Ventures LLC. It is source-available, not open source. It is independent software for workflows compatible with vMix and is not affiliated with, endorsed by, or sponsored by vMix or StudioCoast Pty Ltd. vMix is a trademark of its respective owner.
 
-[View the product page](/products/cuescope-mcp), [open the npm package](https://www.npmjs.com/package/@greenhouselabs/cuescope-mcp), [review the public repository](https://github.com/greenhouselabs/cuescope-mcp), or [read the v1.0.1 release](https://github.com/greenhouselabs/cuescope-mcp/releases/tag/v1.0.1). Live demo coming soon.
+[View the product page](/products/cuescope-mcp), [open the npm package](https://www.npmjs.com/package/@greenhouselabs/cuescope-mcp), [review the public repository](https://github.com/greenhouselabs/cuescope-mcp), or [read the v1.0.2 release](https://github.com/greenhouselabs/cuescope-mcp/releases/tag/v1.0.2).

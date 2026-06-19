@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import {
+  ArrowRight,
   BadgeCheck,
   BookOpen,
   CheckCircle2,
@@ -17,10 +18,8 @@ import {
   Package,
   Radio,
   ShieldCheck,
-  Sparkles,
   TerminalSquare,
   Wrench,
-  Zap,
 } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -34,19 +33,19 @@ const cueScopeNpmUrl =
   "https://www.npmjs.com/package/@greenhouselabs/cuescope-mcp"
 const cueScopeGithubUrl = "https://github.com/greenhouselabs/cuescope-mcp"
 const cueScopeReleaseUrl =
-  "https://github.com/greenhouselabs/cuescope-mcp/releases/tag/v1.0.1"
+  "https://github.com/greenhouselabs/cuescope-mcp/releases/tag/v1.0.2"
 
 export const metadata: Metadata = {
-  title: "CueScope",
+  title: "CueScope MCP",
   description:
-    "CueScope is a read-first MCP server that gives AI assistants safe production intelligence for workflows compatible with vMix. Available now on npm.",
+    "CueScope is a read-first MCP server for workflows compatible with vMix, available now on npm as @greenhouselabs/cuescope-mcp.",
   alternates: {
     canonical: "/products/cuescope-mcp",
   },
   openGraph: {
-    title: "CueScope | Greenhouse Labs",
+    title: "CueScope MCP | Greenhouse Labs",
     description:
-      "Read-first production intelligence for workflows compatible with vMix. Available now on npm with full public launch June 19, 2026.",
+      "Read-first production intelligence for workflows compatible with vMix. Public npm launch is live with v1.0.2.",
     url: "/products/cuescope-mcp",
     images: [
       {
@@ -60,37 +59,62 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "CueScope | Greenhouse Labs",
+    title: "CueScope MCP | Greenhouse Labs",
     description:
-      "Read-first production intelligence for workflows compatible with vMix. Available now on npm.",
+      "Read-first production intelligence for workflows compatible with vMix. Public npm launch is live with v1.0.2.",
     images: [cueScopeScreenshot],
   },
 }
 
 const capabilities = [
   {
-    title: "Inspect vMix State",
+    title: "Inspect Live Show State",
     description:
-      "Read live vMix state, inputs, overlays, title fields, audio buses, tally, and production relationships before making recommendations.",
+      "Read live show state, inputs, active and preview paths, overlays, tally, title fields, and production relationships before making recommendations.",
     icon: FileSearch,
   },
   {
-    title: "Explain The Show",
+    title: "Explain Inputs And Titles",
     description:
-      "Translate a preset into operator language: program, preview, likely roles, helper inputs, graphics, and review points.",
+      "Translate inputs, title fields, countdown metadata, and data-source bindings into operator language with clear assumptions.",
     icon: Monitor,
   },
   {
-    title: "Diagnose Risks",
+    title: "Diagnose Audio And Routing",
     description:
-      "Review audio routing, mix-minus patterns, output readiness, logs, connection issues, and saved-vs-live preset drift.",
+      "Review buses, mutes, solo state, vMix Call patterns, route choices, output readiness, and mix-minus risks.",
     icon: Headphones,
   },
   {
-    title: "Plan Automation",
+    title: "Review Saved .vmix Presets",
     description:
-      "Generate reviewable VB.NET scripts and ordered API plans using actual input references without executing them in Review Mode.",
+      "Inspect saved presets for scripts, triggers, audio evidence, redacted metadata, and differences from the running show.",
+    icon: GitBranch,
+  },
+  {
+    title: "Generate Reviewable Plans",
+    description:
+      "Produce script reviews, targeted trigger summaries, and ordered API plans using actual references without executing them in Review Mode.",
     icon: Code2,
+  },
+]
+
+const releaseHighlights = [
+  {
+    title: "Live-first input inspection",
+    body: "Prioritizes the running show so producers, technical directors, and operators can inspect real inputs before leaning on saved preset assumptions.",
+  },
+  {
+    title: "Saved GT/title countdown metadata parsing",
+    body: "Surfaces saved graphics and title countdown metadata so review notes can include timing behavior operators need to verify.",
+  },
+  {
+    title: "Title data-source binding detection",
+    body: "Detects title field bindings to data sources, helping teams trace where on-air text may be populated from before showtime.",
+  },
+  {
+    title: "Targeted trigger/script reference summaries",
+    body: "Summarizes nearby trigger and script references for the requested input so automation risks are easier to review before control is enabled.",
   },
 ]
 
@@ -157,13 +181,13 @@ const audiences = [
 const launchItems = [
   {
     label: "Package",
-    value: "@greenhouselabs/cuescope-mcp@1.0.1",
+    value: "@greenhouselabs/cuescope-mcp@1.0.2",
     detail: "Published on npm for MCP client setup.",
   },
   {
     label: "Status",
-    value: "Available on npm",
-    detail: "Full public launch is June 19, 2026. Live demo coming soon.",
+    value: "Public launch live",
+    detail: "CueScope is available now from the public npm registry.",
   },
   {
     label: "GitHub repository",
@@ -172,16 +196,16 @@ const launchItems = [
   },
   {
     label: "Release",
-    value: "v1.0.1",
-    detail: "The current GitHub release is available for launch review.",
+    value: "v1.0.2",
+    detail: "Latest release includes richer live inspection and preset metadata review.",
   },
 ]
 
 const installStatus = [
-  "Published on npm as @greenhouselabs/cuescope-mcp@1.0.1.",
+  "Published on npm as @greenhouselabs/cuescope-mcp@1.0.2.",
+  "Global install command: npm install -g @greenhouselabs/cuescope-mcp.",
   "The source-available GitHub repository is public for review, setup guidance, and issue tracking.",
-  "GitHub release v1.0.1 is available for launch review.",
-  "Live demo coming soon.",
+  "GitHub release v1.0.2 is available for launch review.",
   "Review Mode is the recommended first-run experience with 18 review-only tools.",
   "The server has 135 known tools, with control and high-impact tools hidden behind explicit gates.",
 ]
@@ -249,24 +273,25 @@ export default function CueScopeProductPage() {
             variant="outline"
             className="mb-5 border-emerald-400/40 bg-emerald-500/10 text-emerald-200"
           >
-            Available on npm. Full public launch June 19, 2026.
+            Public npm launch live. Latest release v1.0.2.
           </Badge>
           <h1 className="text-5xl font-semibold tracking-tight sm:text-6xl lg:text-7xl">
-            CueScope
+            CueScope MCP
           </h1>
           <p className="mx-auto mt-5 max-w-3xl text-xl leading-8 text-neutral-200 sm:text-2xl">
             Read-first production intelligence for workflows compatible with
             vMix.
           </p>
           <p className="mx-auto mt-5 max-w-3xl text-base leading-7 text-neutral-300 sm:text-lg">
-            CueScope helps AI assistants inspect vMix state, explain live
-            shows, diagnose routing and output risks, review scripts, and
-            generate automation plans before anything changes in vMix.
+            CueScope helps producers, technical directors, and operators use AI
+            assistants to inspect live-production state, explain inputs and
+            titles, diagnose routing risks, review saved presets and scripts,
+            and generate automation plans before anything changes.
             Available now on npm as{" "}
             <span className="font-mono text-emerald-200">
-              @greenhouselabs/cuescope-mcp@1.0.1
+              @greenhouselabs/cuescope-mcp@1.0.2
             </span>
-            . Live demo coming soon.
+            .
           </p>
           <NewsletterForm
             buttonLabel="Join CueScope Updates"
@@ -319,7 +344,7 @@ export default function CueScopeProductPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  View Release
+                  View v1.0.2 Release
                   <GitBranch className="ml-2 h-4 w-4" />
                 </a>
               </Button>
@@ -349,7 +374,7 @@ export default function CueScopeProductPage() {
                 Package
               </p>
               <p className="mt-2 break-words font-mono text-sm text-neutral-200">
-                @greenhouselabs/cuescope-mcp@1.0.1
+                @greenhouselabs/cuescope-mcp@1.0.2
               </p>
             </div>
             <div className="rounded-lg border border-white/10 bg-neutral-950/70 p-4">
@@ -380,14 +405,19 @@ export default function CueScopeProductPage() {
               Available on npm
             </Badge>
             <h2 className="text-3xl font-semibold tracking-tight">
-              Available now, launching publicly June 19, 2026
+              Public npm launch is live
             </h2>
             <p className="mt-4 text-sm leading-6 text-neutral-300 sm:text-base">
               CueScope is published on npm and the source-available GitHub
               repository is public for review, setup guidance, and issue
-              tracking. The full
-              public launch is June 19, 2026, with a live demo coming soon.
+              tracking. Install the package globally or connect it directly
+              from an MCP client with npx.
             </p>
+            <div className="mt-5 overflow-hidden rounded-lg border border-white/10 bg-neutral-950">
+              <pre className="overflow-x-auto p-4 text-left text-sm leading-6 text-emerald-100">
+                <code>npm install -g @greenhouselabs/cuescope-mcp</code>
+              </pre>
+            </div>
             <NewsletterForm
               buttonLabel="Get CueScope Updates"
               className="mt-6"
@@ -435,7 +465,7 @@ export default function CueScopeProductPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Open v1.0.1 Release
+                  Open v1.0.2 Release
                   <GitBranch className="ml-2 h-4 w-4" />
                 </a>
               </Button>
@@ -477,6 +507,45 @@ export default function CueScopeProductPage() {
         </div>
       </section>
 
+      <section className="border-y border-emerald-400/20 bg-emerald-950/15">
+        <div className="mx-auto grid max-w-7xl gap-8 px-6 py-16 lg:grid-cols-[0.7fr_1.3fr] lg:items-start">
+          <div>
+            <Badge
+              variant="outline"
+              className="mb-4 border-emerald-400/30 bg-emerald-500/10 text-emerald-200"
+            >
+              v1.0.2 update
+            </Badge>
+            <h2 className="text-3xl font-semibold tracking-tight">
+              Sharper inspection before operators make changes
+            </h2>
+            <p className="mt-4 text-sm leading-6 text-neutral-300 sm:text-base">
+              The latest release focuses on production confidence: more useful
+              live input inspection, richer saved preset metadata, and more
+              targeted review of title, trigger, and script references.
+            </p>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {releaseHighlights.map((highlight) => (
+              <article
+                key={highlight.title}
+                className="rounded-lg border border-white/10 bg-neutral-950/50 p-5"
+              >
+                <div className="mb-3 flex items-center gap-2 text-emerald-300">
+                  <BadgeCheck className="h-4 w-4 shrink-0" />
+                  <h3 className="font-semibold text-white">
+                    {highlight.title}
+                  </h3>
+                </div>
+                <p className="text-sm leading-6 text-neutral-400">
+                  {highlight.body}
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="border-y border-white/10 bg-neutral-900/25">
         <div className="mx-auto max-w-7xl px-6 py-16">
           <div className="max-w-2xl">
@@ -490,12 +559,12 @@ export default function CueScopeProductPage() {
               Understand the show before changing the show
             </h2>
             <p className="mt-4 text-sm leading-6 text-neutral-300 sm:text-base">
-              CueScope connects AI assistants to vMix state and curated
+              CueScope connects AI assistants to live show state and curated
               production knowledge so operators can ask better questions before
               a rehearsal, stream, recording, or client show.
             </p>
           </div>
-          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
             {capabilities.map((capability) => {
               const Icon = capability.icon
 
@@ -654,8 +723,8 @@ export default function CueScopeProductPage() {
               <div>
                 <h3 className="font-semibold">Launch status</h3>
                 <p className="text-sm text-neutral-400">
-                  Setup details are live, npm install is available now, and a
-                  demo is coming soon.
+                  Setup details are live, npm install is available now, and
+                  the v1.0.2 release is ready for review.
                 </p>
               </div>
             </div>
@@ -733,7 +802,6 @@ export default function CueScopeProductPage() {
         className="mx-auto max-w-4xl scroll-mt-24 px-6 pb-28 text-center sm:pb-20"
       >
         <div className="rounded-lg border border-emerald-500/20 bg-emerald-950/20 p-8">
-          <Sparkles className="mx-auto mb-4 h-8 w-8 text-emerald-300" />
           <h2 className="text-2xl font-semibold tracking-tight">
             Follow the CueScope launch
           </h2>
@@ -758,7 +826,7 @@ export default function CueScopeProductPage() {
             >
               <Link href="/services">
                 Build With Greenhouse Labs
-                <Zap className="ml-2 h-4 w-4" />
+                <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
           </div>

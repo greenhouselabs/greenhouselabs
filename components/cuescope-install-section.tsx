@@ -7,10 +7,12 @@ import { Badge } from "@/components/ui/badge"
 const packageFacts = [
   { label: "Package", value: "@greenhouselabs/cuescope-mcp" },
   { label: "Binary", value: "cuescope-mcp" },
-  { label: "Version", value: "1.0.1" },
+  { label: "Version", value: "1.0.2" },
   { label: "Runtime", value: "Node.js 20+" },
   { label: "Default Mode", value: "Review Mode" },
 ]
+
+const globalInstallCommand = "npm install -g @greenhouselabs/cuescope-mcp"
 
 const setupRequirements = [
   {
@@ -148,8 +150,8 @@ export function CueScopeInstallSection() {
               <span className="break-words font-mono text-emerald-200">
                 @greenhouselabs/cuescope-mcp
               </span>
-              . Start with Review Mode, then enable control only after the
-              read-only setup is working.
+              . Version 1.0.2 is live. Start with Review Mode, then enable
+              control only after the read-only setup is working.
             </p>
 
             <div className="mt-6 grid min-w-0 gap-3 sm:grid-cols-2">
@@ -166,6 +168,18 @@ export function CueScopeInstallSection() {
                   </p>
                 </div>
               ))}
+            </div>
+
+            <div className="min-w-0 rounded-lg border border-emerald-400/20 bg-emerald-950/20 p-5">
+              <div className="mb-3 flex items-center gap-2 text-neutral-200">
+                <TerminalSquare className="h-4 w-4 text-emerald-300" />
+                <h3 className="font-semibold">Global install</h3>
+              </div>
+              <CodeBlock code={globalInstallCommand} language="bash" />
+              <p className="mt-3 text-sm leading-6 text-neutral-400">
+                MCP client setups can also run the published package with npx,
+                as shown in the examples.
+              </p>
             </div>
 
             <div className="min-w-0 rounded-lg border border-white/10 bg-neutral-950/50 p-5">

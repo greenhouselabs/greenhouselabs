@@ -10,9 +10,12 @@ import {
   BookOpen,
   CreditCard,
   ExternalLink,
+  Flower2,
   Github,
   MonitorPlay,
   Package,
+  Sprout,
+  Wheat,
 } from "lucide-react"
 
 interface ProjectPageProps {
@@ -82,6 +85,25 @@ function stageBadgeClasses(stage: string) {
   }
 }
 
+function StageIcon({
+  stage,
+  className = "h-16 w-16 opacity-30",
+}: {
+  stage: string
+  className?: string
+}) {
+  switch (stage) {
+    case "Seedling":
+      return <Sprout aria-hidden="true" className={className} />
+    case "Blooming":
+      return <Flower2 aria-hidden="true" className={className} />
+    case "Harvest":
+      return <Wheat aria-hidden="true" className={className} />
+    default:
+      return null
+  }
+}
+
 function isExternalUrl(href: string) {
   return href.startsWith("http://") || href.startsWith("https://")
 }
@@ -137,11 +159,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                 priority
               />
             ) : (
-              <span className="text-6xl opacity-30">
-                {frontmatter.stage === "Seedling" && "🌱"}
-                {frontmatter.stage === "Blooming" && "🌸"}
-                {frontmatter.stage === "Harvest" && "🌾"}
-              </span>
+              <StageIcon stage={frontmatter.stage} />
             )}
           </div>
 
