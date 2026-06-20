@@ -266,12 +266,12 @@ export default function CueScopeProductPage() {
   return (
     <div>
       <CueScopeLaunchFab />
-      <section className="relative isolate overflow-hidden border-b border-white/10 px-6 py-20 sm:py-24 lg:py-28">
+      <section className="relative isolate overflow-hidden border-b border-white/10 px-4 py-20 sm:px-6 sm:py-24 lg:py-28">
         <ProductBackdrop />
-        <div className="mx-auto max-w-5xl text-center">
+        <div className="mx-auto max-w-5xl min-w-0 text-center">
           <Badge
             variant="outline"
-            className="mb-5 border-emerald-400/40 bg-emerald-500/10 text-emerald-200"
+            className="mb-5 max-w-full justify-center text-center border-emerald-400/40 bg-emerald-500/10 text-emerald-200"
           >
             Public npm launch live. Latest release v1.0.2.
           </Badge>
@@ -288,7 +288,7 @@ export default function CueScopeProductPage() {
             titles, diagnose routing risks, review saved presets and scripts,
             and generate automation plans before anything changes.
             Available now on npm as{" "}
-            <span className="font-mono text-emerald-200">
+            <span className="break-words font-mono text-emerald-200">
               @greenhouselabs/cuescope-mcp@1.0.2
             </span>
             .
@@ -296,17 +296,17 @@ export default function CueScopeProductPage() {
           <NewsletterForm
             buttonLabel="Join CueScope Updates"
             className="mt-8"
-            formClassName="mx-auto flex max-w-xl flex-col gap-2 sm:flex-row"
+            formClassName="mx-auto flex max-w-xl min-w-0 flex-col gap-2 sm:flex-row"
             placeholder="operator@studio.com"
             source="cuescope-mcp"
             successMessage="You're on the CueScope updates list."
             tags={["cuescope-mcp", "launch-list"]}
           />
           <div className="mt-4 flex justify-center">
-            <div className="flex w-full flex-col justify-center gap-3 sm:w-auto sm:flex-row sm:flex-wrap">
+            <div className="flex w-full min-w-0 flex-col justify-center gap-3 sm:w-auto sm:flex-row sm:flex-wrap">
               <Button
                 size="lg"
-                className="rounded-lg bg-emerald-400 text-neutral-950 hover:bg-emerald-300"
+                className="w-full max-w-full rounded-lg bg-emerald-400 text-neutral-950 hover:bg-emerald-300 sm:w-auto"
                 asChild
               >
                 <a
@@ -321,7 +321,7 @@ export default function CueScopeProductPage() {
               <Button
                 size="lg"
                 variant="outline"
-                className="rounded-lg border-white/10 hover:bg-white/10"
+                className="w-full max-w-full rounded-lg border-white/10 hover:bg-white/10 sm:w-auto"
                 asChild
               >
                 <a
@@ -336,7 +336,7 @@ export default function CueScopeProductPage() {
               <Button
                 size="lg"
                 variant="outline"
-                className="rounded-lg border-white/10 hover:bg-white/10"
+                className="w-full max-w-full rounded-lg border-white/10 hover:bg-white/10 sm:w-auto"
                 asChild
               >
                 <a
@@ -351,7 +351,7 @@ export default function CueScopeProductPage() {
               <Button
                 size="lg"
                 variant="outline"
-                className="rounded-lg border-white/10 hover:bg-white/10"
+                className="w-full max-w-full rounded-lg border-white/10 hover:bg-white/10 sm:w-auto"
                 asChild
               >
                 <Link href="#safety-model">
@@ -362,14 +362,14 @@ export default function CueScopeProductPage() {
             </div>
           </div>
           <CueScopeProductScreenshot />
-          <div className="mx-auto mt-10 grid max-w-4xl gap-3 text-left sm:grid-cols-2 lg:grid-cols-4">
-            <div className="rounded-lg border border-white/10 bg-neutral-950/70 p-4">
+          <div className="mx-auto mt-10 grid max-w-4xl min-w-0 gap-3 text-left sm:grid-cols-2 lg:grid-cols-4">
+            <div className="min-w-0 rounded-lg border border-white/10 bg-neutral-950/70 p-4">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500">
                 Default
               </p>
               <p className="mt-2 text-sm text-neutral-200">Review Mode</p>
             </div>
-            <div className="rounded-lg border border-white/10 bg-neutral-950/70 p-4">
+            <div className="min-w-0 rounded-lg border border-white/10 bg-neutral-950/70 p-4">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500">
                 Package
               </p>
@@ -377,13 +377,13 @@ export default function CueScopeProductPage() {
                 @greenhouselabs/cuescope-mcp@1.0.2
               </p>
             </div>
-            <div className="rounded-lg border border-white/10 bg-neutral-950/70 p-4">
+            <div className="min-w-0 rounded-lg border border-white/10 bg-neutral-950/70 p-4">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500">
                 License
               </p>
               <p className="mt-2 text-sm text-neutral-200">Source-available</p>
             </div>
-            <div className="rounded-lg border border-white/10 bg-neutral-950/70 p-4">
+            <div className="min-w-0 rounded-lg border border-white/10 bg-neutral-950/70 p-4">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500">
                 Status
               </p>
@@ -395,9 +395,9 @@ export default function CueScopeProductPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-16">
-        <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
-          <div>
+      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+        <div className="grid min-w-0 gap-6 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:items-start">
+          <div className="min-w-0">
             <Badge
               variant="outline"
               className="mb-4 border-cyan-400/30 text-cyan-200"
@@ -413,23 +413,25 @@ export default function CueScopeProductPage() {
               tracking. Install the package globally or connect it directly
               from an MCP client with npx.
             </p>
-            <div className="mt-5 overflow-hidden rounded-lg border border-white/10 bg-neutral-950">
-              <pre className="overflow-x-auto p-4 text-left text-sm leading-6 text-emerald-100">
-                <code>npm install -g @greenhouselabs/cuescope-mcp</code>
+            <div className="mt-5 min-w-0 overflow-hidden rounded-lg border border-white/10 bg-neutral-950">
+              <pre className="max-w-full overflow-x-auto whitespace-pre-wrap break-words p-4 text-left text-[0.8rem] leading-6 text-emerald-100 sm:text-sm">
+                <code className="block min-w-0">
+                  {"npm install -g @greenhouselabs/cuescope-mcp"}
+                </code>
               </pre>
             </div>
             <NewsletterForm
               buttonLabel="Get CueScope Updates"
               className="mt-6"
-              formClassName="flex flex-col gap-2 sm:flex-row lg:flex-col"
+              formClassName="flex min-w-0 flex-col gap-2 sm:flex-row lg:flex-col"
               placeholder="you@production.team"
               source="cuescope-mcp"
               successMessage="You're on the CueScope updates list."
               tags={["cuescope-mcp", "launch-list"]}
             />
-            <div className="mt-3 flex flex-col gap-3 sm:flex-row lg:flex-col">
+            <div className="mt-3 flex min-w-0 flex-col gap-3 sm:flex-row sm:flex-wrap lg:flex-col">
               <Button
-                className="rounded-lg bg-emerald-400 text-neutral-950 hover:bg-emerald-300"
+                className="w-full max-w-full rounded-lg bg-emerald-400 text-neutral-950 hover:bg-emerald-300 sm:w-auto lg:w-full"
                 asChild
               >
                 <a
@@ -443,7 +445,7 @@ export default function CueScopeProductPage() {
               </Button>
               <Button
                 variant="outline"
-                className="rounded-lg border-white/10 hover:bg-white/10"
+                className="w-full max-w-full rounded-lg border-white/10 hover:bg-white/10 sm:w-auto lg:w-full"
                 asChild
               >
                 <a
@@ -457,7 +459,7 @@ export default function CueScopeProductPage() {
               </Button>
               <Button
                 variant="outline"
-                className="rounded-lg border-white/10 hover:bg-white/10"
+                className="w-full max-w-full rounded-lg border-white/10 hover:bg-white/10 sm:w-auto lg:w-full"
                 asChild
               >
                 <a
@@ -471,7 +473,7 @@ export default function CueScopeProductPage() {
               </Button>
               <Button
                 variant="outline"
-                className="rounded-lg border-white/10 hover:bg-white/10"
+                className="w-full max-w-full rounded-lg border-white/10 hover:bg-white/10 sm:w-auto lg:w-full"
                 asChild
               >
                 <a
@@ -486,13 +488,13 @@ export default function CueScopeProductPage() {
             </div>
           </div>
 
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid min-w-0 gap-4 md:grid-cols-2 lg:grid-cols-4">
             {launchItems.map((item) => (
               <article
                 key={item.label}
-                className="rounded-lg border border-white/10 bg-neutral-900/40 p-5"
+                className="min-w-0 rounded-lg border border-white/10 bg-neutral-900/40 p-5"
               >
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500">
+                <p className="break-words text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500">
                   {item.label}
                 </p>
                 <h3 className="mt-3 break-words text-lg font-semibold text-white">
@@ -508,8 +510,8 @@ export default function CueScopeProductPage() {
       </section>
 
       <section className="border-y border-emerald-400/20 bg-emerald-950/15">
-        <div className="mx-auto grid max-w-7xl gap-8 px-6 py-16 lg:grid-cols-[0.7fr_1.3fr] lg:items-start">
-          <div>
+        <div className="mx-auto grid max-w-7xl min-w-0 gap-8 px-4 py-16 sm:px-6 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)] lg:items-start">
+          <div className="min-w-0">
             <Badge
               variant="outline"
               className="mb-4 border-emerald-400/30 bg-emerald-500/10 text-emerald-200"
@@ -525,15 +527,15 @@ export default function CueScopeProductPage() {
               targeted review of title, trigger, and script references.
             </p>
           </div>
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="grid min-w-0 gap-4 sm:grid-cols-2">
             {releaseHighlights.map((highlight) => (
               <article
                 key={highlight.title}
-                className="rounded-lg border border-white/10 bg-neutral-950/50 p-5"
+                className="min-w-0 rounded-lg border border-white/10 bg-neutral-950/50 p-5"
               >
-                <div className="mb-3 flex items-center gap-2 text-emerald-300">
+                <div className="mb-3 flex min-w-0 items-center gap-2 text-emerald-300">
                   <BadgeCheck className="h-4 w-4 shrink-0" />
-                  <h3 className="font-semibold text-white">
+                  <h3 className="min-w-0 break-words font-semibold text-white">
                     {highlight.title}
                   </h3>
                 </div>
@@ -547,7 +549,7 @@ export default function CueScopeProductPage() {
       </section>
 
       <section className="border-y border-white/10 bg-neutral-900/25">
-        <div className="mx-auto max-w-7xl px-6 py-16">
+        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
           <div className="max-w-2xl">
             <Badge
               variant="outline"
@@ -564,14 +566,14 @@ export default function CueScopeProductPage() {
               a rehearsal, stream, recording, or client show.
             </p>
           </div>
-          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+          <div className="mt-10 grid min-w-0 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
             {capabilities.map((capability) => {
               const Icon = capability.icon
 
               return (
                 <article
                   key={capability.title}
-                  className="rounded-lg border border-white/10 bg-neutral-950/50 p-5"
+                  className="min-w-0 rounded-lg border border-white/10 bg-neutral-950/50 p-5"
                 >
                   <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-300">
                     <Icon className="h-5 w-5" />
@@ -587,7 +589,7 @@ export default function CueScopeProductPage() {
         </div>
       </section>
 
-      <section id="safety-model" className="mx-auto max-w-7xl px-6 py-16">
+      <section id="safety-model" className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
         <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div className="max-w-2xl">
             <Badge
@@ -610,14 +612,14 @@ export default function CueScopeProductPage() {
           </div>
           <ShieldCheck className="hidden h-10 w-10 text-emerald-300 sm:block" />
         </div>
-        <div className="grid gap-5 md:grid-cols-3">
+        <div className="grid min-w-0 gap-5 md:grid-cols-3">
           {safetyModes.map((mode) => {
             const Icon = mode.icon
 
             return (
               <article
                 key={mode.mode}
-                className="rounded-lg border border-white/10 bg-neutral-900/40 p-6"
+                className="min-w-0 rounded-lg border border-white/10 bg-neutral-900/40 p-6"
               >
                 <div className="mb-5 flex items-center justify-between gap-4">
                   <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-white/5 text-emerald-300">
@@ -643,9 +645,9 @@ export default function CueScopeProductPage() {
       <CueScopeInstallSection />
 
       <section className="border-y border-white/10 bg-neutral-900/25">
-        <div className="mx-auto max-w-7xl px-6 py-16">
-          <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
-            <div>
+        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+          <div className="grid min-w-0 gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:items-start">
+            <div className="min-w-0">
               <Badge
                 variant="outline"
                 className="mb-4 border-cyan-400/30 text-cyan-200"
@@ -663,15 +665,15 @@ export default function CueScopeProductPage() {
                 trust.
               </p>
             </div>
-            <div className="grid gap-4 sm:grid-cols-2">
+            <div className="grid min-w-0 gap-4 sm:grid-cols-2">
               {workflows.map((workflow) => (
                 <article
                   key={workflow.title}
-                  className="rounded-lg border border-white/10 bg-neutral-950/50 p-5"
+                  className="min-w-0 rounded-lg border border-white/10 bg-neutral-950/50 p-5"
                 >
-                  <div className="mb-3 flex items-center gap-2 text-emerald-300">
-                    <CheckCircle2 className="h-4 w-4" />
-                    <h3 className="font-semibold text-white">
+                  <div className="mb-3 flex min-w-0 items-center gap-2 text-emerald-300">
+                    <CheckCircle2 className="h-4 w-4 shrink-0" />
+                    <h3 className="min-w-0 break-words font-semibold text-white">
                       {workflow.title}
                     </h3>
                   </div>
@@ -685,9 +687,9 @@ export default function CueScopeProductPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-16">
-        <div className="grid gap-8 lg:grid-cols-2">
-          <div>
+      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+        <div className="grid min-w-0 gap-8 lg:grid-cols-2">
+          <div className="min-w-0">
             <Badge
               variant="outline"
               className="mb-4 border-emerald-400/30 text-emerald-200"
@@ -715,12 +717,12 @@ export default function CueScopeProductPage() {
             </div>
           </div>
 
-          <div className="rounded-lg border border-white/10 bg-neutral-900/40 p-6">
-            <div className="mb-5 flex items-center gap-3">
+          <div className="min-w-0 rounded-lg border border-white/10 bg-neutral-900/40 p-6">
+            <div className="mb-5 flex min-w-0 items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-cyan-500/10 text-cyan-200">
                 <TerminalSquare className="h-5 w-5" />
               </div>
-              <div>
+              <div className="min-w-0">
                 <h3 className="font-semibold">Launch status</h3>
                 <p className="text-sm text-neutral-400">
                   Setup details are live, npm install is available now, and
@@ -730,9 +732,11 @@ export default function CueScopeProductPage() {
             </div>
             <div className="space-y-3">
               {installStatus.map((item) => (
-                <div key={item} className="flex gap-3">
+                <div key={item} className="flex min-w-0 gap-3">
                   <BadgeCheck className="mt-1 h-4 w-4 shrink-0 text-emerald-300" />
-                  <p className="text-sm leading-6 text-neutral-300">{item}</p>
+                  <p className="min-w-0 break-words text-sm leading-6 text-neutral-300">
+                    {item}
+                  </p>
                 </div>
               ))}
             </div>
@@ -741,8 +745,8 @@ export default function CueScopeProductPage() {
       </section>
 
       <section className="border-y border-white/10 bg-neutral-900/25">
-        <div className="mx-auto grid max-w-7xl gap-8 px-6 py-16 lg:grid-cols-3">
-          <article className="rounded-lg border border-white/10 bg-neutral-950/50 p-6">
+        <div className="mx-auto grid max-w-7xl min-w-0 gap-8 px-4 py-16 sm:px-6 lg:grid-cols-3">
+          <article className="min-w-0 rounded-lg border border-white/10 bg-neutral-950/50 p-6">
             <GitBranch className="mb-4 h-6 w-6 text-emerald-300" />
             <h3 className="text-lg font-semibold">Source-available</h3>
             <p className="mt-3 text-sm leading-6 text-neutral-400">
@@ -751,7 +755,7 @@ export default function CueScopeProductPage() {
               the CueScope Source-Available License.
             </p>
           </article>
-          <article className="rounded-lg border border-white/10 bg-neutral-950/50 p-6">
+          <article className="min-w-0 rounded-lg border border-white/10 bg-neutral-950/50 p-6">
             <BookOpen className="mb-4 h-6 w-6 text-cyan-200" />
             <h3 className="text-lg font-semibold">Not open source</h3>
             <p className="mt-3 text-sm leading-6 text-neutral-400">
@@ -760,7 +764,7 @@ export default function CueScopeProductPage() {
               Greenhouse Ventures LLC.
             </p>
           </article>
-          <article className="rounded-lg border border-white/10 bg-neutral-950/50 p-6">
+          <article className="min-w-0 rounded-lg border border-white/10 bg-neutral-950/50 p-6">
             <Radio className="mb-4 h-6 w-6 text-amber-200" />
             <h3 className="text-lg font-semibold">Independent integration</h3>
             <p className="mt-3 text-sm leading-6 text-neutral-400">
@@ -773,7 +777,7 @@ export default function CueScopeProductPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-5xl px-6 py-16">
+      <section className="mx-auto max-w-5xl px-4 py-16 sm:px-6">
         <div className="text-center">
           <Badge
             variant="outline"
@@ -799,9 +803,9 @@ export default function CueScopeProductPage() {
 
       <section
         id="launch-updates"
-        className="mx-auto max-w-4xl scroll-mt-24 px-6 pb-28 text-center sm:pb-20"
+        className="mx-auto max-w-4xl scroll-mt-24 px-4 pb-36 text-center sm:px-6 sm:pb-20"
       >
-        <div className="rounded-lg border border-emerald-500/20 bg-emerald-950/20 p-8">
+        <div className="min-w-0 rounded-lg border border-emerald-500/20 bg-emerald-950/20 p-5 sm:p-8">
           <h2 className="text-2xl font-semibold tracking-tight">
             Follow the CueScope launch
           </h2>
@@ -812,7 +816,7 @@ export default function CueScopeProductPage() {
           <NewsletterForm
             buttonLabel="Join CueScope Updates"
             className="mt-6"
-            formClassName="mx-auto flex max-w-xl flex-col justify-center gap-2 sm:flex-row"
+            formClassName="mx-auto flex max-w-xl min-w-0 flex-col justify-center gap-2 sm:flex-row"
             placeholder="you@studio.com"
             source="cuescope-mcp"
             successMessage="You're on the CueScope updates list."
@@ -821,7 +825,7 @@ export default function CueScopeProductPage() {
           <div className="mt-4 flex justify-center">
             <Button
               variant="outline"
-              className="rounded-lg border-white/10 hover:bg-white/10"
+              className="w-full max-w-full rounded-lg border-white/10 hover:bg-white/10 sm:w-auto"
               asChild
             >
               <Link href="/services">

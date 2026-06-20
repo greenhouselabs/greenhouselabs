@@ -12,8 +12,8 @@ export function CueScopeLaunchFab() {
   }
 
   return (
-    <aside className="fixed inset-x-4 bottom-4 z-40 sm:inset-x-auto sm:right-6 sm:w-[22rem]">
-      <div className="relative rounded-lg border border-emerald-400/20 bg-neutral-950/95 shadow-2xl shadow-black/30 backdrop-blur transition hover:border-emerald-300/50 hover:bg-neutral-900">
+    <aside className="fixed inset-x-3 bottom-3 z-40 max-w-[calc(100vw-1.5rem)] sm:inset-x-auto sm:bottom-6 sm:right-6 sm:w-[22rem]">
+      <div className="relative max-w-full rounded-lg border border-emerald-400/20 bg-neutral-950/95 shadow-2xl shadow-black/30 backdrop-blur transition hover:border-emerald-300/50 hover:bg-neutral-900">
         <Link
           href="#launch-updates"
           className="group flex min-w-0 items-center gap-3 p-3 pr-11 text-left"
@@ -21,8 +21,8 @@ export function CueScopeLaunchFab() {
           <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-300">
             <Mail className="h-5 w-5" />
           </span>
-          <span className="min-w-0">
-            <span className="block text-xs font-semibold uppercase tracking-[0.18em] text-emerald-200">
+          <span className="min-w-0 overflow-hidden">
+            <span className="block truncate text-xs font-semibold uppercase tracking-[0.18em] text-emerald-200">
               Available on npm
             </span>
             <span className="mt-1 block text-sm text-neutral-200 group-hover:text-white">

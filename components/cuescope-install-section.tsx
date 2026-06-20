@@ -119,8 +119,8 @@ function CodeBlock({
 }) {
   return (
     <div className="max-w-full min-w-0 overflow-hidden rounded-lg border border-white/10 bg-neutral-950">
-      <pre className="max-w-full overflow-x-auto p-4 text-left text-xs leading-6 text-neutral-200">
-        <code className={`language-${language}`}>{code}</code>
+      <pre className="max-w-full overflow-x-auto whitespace-pre-wrap break-words p-4 text-left text-[0.75rem] leading-6 text-neutral-200 sm:text-xs">
+        <code className={`block min-w-0 language-${language}`}>{code}</code>
       </pre>
     </div>
   )
@@ -133,8 +133,8 @@ export function CueScopeInstallSection() {
 
   return (
     <section id="install" className="border-y border-white/10 bg-neutral-900/25">
-      <div className="mx-auto max-w-7xl px-6 py-16">
-        <div className="grid min-w-0 gap-8 lg:grid-cols-[0.86fr_1.14fr] lg:items-start">
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+        <div className="grid min-w-0 gap-8 lg:grid-cols-[minmax(0,0.86fr)_minmax(0,1.14fr)] lg:items-start">
           <div className="min-w-0 space-y-5">
             <Badge
               variant="outline"
