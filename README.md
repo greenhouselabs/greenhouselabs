@@ -20,7 +20,7 @@ Greenhouse Labs is a product studio and software agency focused on practical AI 
 | Project | Focus | Status |
 | --- | --- | --- |
 | [Circuit](https://gocircuit.tv) | Creator streaming platform with live video, VOD, community features, and Base L2 payment rails | Live platform |
-| [Privy AI](https://getprivy.io) | Privacy policy and terms analyzer that turns legal documents into plain-English risk insight | Live app |
+| [Privy AI](https://getprivy.net) | Privacy policy and terms analyzer that turns legal documents into plain-English risk insight | Live app |
 | [NDI Audio Recorder](https://www.greenhouselabs.io/contact?interest=ndi-audio-recorder) | Professional NDI audio stream recording with monitoring, synchronization, and export tooling | Licensing soon |
 | [AI Workflow Platform](https://www.greenhouselabs.io/projects/ai-workflow-platform) | Nine-module internal AI platform with secure RAG, proposal workflows, reporting, and operations tools | Custom build |
 | [Steve Weed Media](https://steveweedmedia.com) | Live streaming, virtual event, aerial, and video production services in Colorado | Available |
