@@ -304,10 +304,11 @@ export default function Home() {
       <section className="animate-on-scroll mx-auto max-w-4xl px-6 pb-24 text-center">
         <div className="space-y-4">
           <h2 className="text-3xl font-semibold sm:text-4xl">
-            Join the Greenhouse
+            Greenhouse Labs Updates
           </h2>
           <p className="text-neutral-300 text-lg">
-            Get early builds, drop alerts, and behind-the-scenes dev logs.
+            Get product launches, project updates, release notes, and studio
+            writing from across Greenhouse Labs.
           </p>
         </div>
         <div className="mt-6">

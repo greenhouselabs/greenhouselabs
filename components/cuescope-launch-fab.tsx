@@ -26,13 +26,13 @@ export function CueScopeLaunchFab() {
               Available on npm
             </span>
             <span className="mt-1 block text-sm text-neutral-200 group-hover:text-white">
-              Sign up for CueScope updates
+              Join Greenhouse Labs updates
             </span>
           </span>
         </Link>
         <button
           type="button"
-          aria-label="Dismiss launch signup reminder"
+          aria-label="Dismiss Greenhouse Labs signup reminder"
           onClick={() => setDismissed(true)}
           className="absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-md text-neutral-500 transition hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400"
         >

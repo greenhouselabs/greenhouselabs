@@ -294,13 +294,12 @@ export default function CueScopeProductPage() {
             .
           </p>
           <NewsletterForm
-            buttonLabel="Join CueScope Updates"
+            buttonLabel="Join Greenhouse Updates"
             className="mt-8"
             formClassName="mx-auto flex max-w-xl min-w-0 flex-col gap-2 sm:flex-row"
             placeholder="operator@studio.com"
             source="cuescope-mcp"
-            successMessage="You're on the CueScope updates list."
-            tags={["cuescope-mcp", "launch-list"]}
+            successMessage="You're on the Greenhouse Labs updates list."
           />
           <div className="mt-4 flex justify-center">
             <div className="flex w-full min-w-0 flex-col justify-center gap-3 sm:w-auto sm:flex-row sm:flex-wrap">
@@ -421,13 +420,12 @@ export default function CueScopeProductPage() {
               </pre>
             </div>
             <NewsletterForm
-              buttonLabel="Get CueScope Updates"
+              buttonLabel="Join Greenhouse Updates"
               className="mt-6"
               formClassName="flex min-w-0 flex-col gap-2 sm:flex-row lg:flex-col"
               placeholder="you@production.team"
               source="cuescope-mcp"
-              successMessage="You're on the CueScope updates list."
-              tags={["cuescope-mcp", "launch-list"]}
+              successMessage="You're on the Greenhouse Labs updates list."
             />
             <div className="mt-3 flex min-w-0 flex-col gap-3 sm:flex-row sm:flex-wrap lg:flex-col">
               <Button
@@ -807,20 +805,19 @@ export default function CueScopeProductPage() {
       >
         <div className="min-w-0 rounded-lg border border-emerald-500/20 bg-emerald-950/20 p-5 sm:p-8">
           <h2 className="text-2xl font-semibold tracking-tight">
-            Follow the CueScope launch
+            Greenhouse Labs Updates
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-neutral-300">
-            Join CueScope updates for release notes, setup guidance, and demo
-            availability.
+            Get product launches, project updates, release notes, demos, and
+            studio writing from across Greenhouse Labs.
           </p>
           <NewsletterForm
-            buttonLabel="Join CueScope Updates"
+            buttonLabel="Join Greenhouse Updates"
             className="mt-6"
             formClassName="mx-auto flex max-w-xl min-w-0 flex-col justify-center gap-2 sm:flex-row"
             placeholder="you@studio.com"
             source="cuescope-mcp"
-            successMessage="You're on the CueScope updates list."
-            tags={["cuescope-mcp", "launch-list"]}
+            successMessage="You're on the Greenhouse Labs updates list."
           />
           <div className="mt-4 flex justify-center">
             <Button

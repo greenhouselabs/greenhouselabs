@@ -19,7 +19,7 @@ export default function PrivacyPage() {
         <p className="text-lg text-neutral-300 max-w-2xl mx-auto">
           How we collect, use, and protect your information at Greenhouse Labs.
         </p>
-        <p className="text-sm text-neutral-400 mt-4">Last updated: February 2026</p>
+        <p className="text-sm text-neutral-400 mt-4">Last updated: July 2026</p>
       </div>
 
       <div className="prose prose-invert prose-emerald max-w-none space-y-8">
@@ -43,7 +43,7 @@ export default function PrivacyPage() {
           <h2 className="text-2xl font-semibold text-white mb-4">2. How We Use Your Information</h2>
           <ul className="space-y-2 text-neutral-300 mb-6">
             <li><strong>Service Delivery:</strong> To respond to project inquiries and deliver requested content</li>
-            <li><strong>Communication:</strong> To send project updates, newsletters, and respond to your questions</li>
+            <li><strong>Communication:</strong> To send Greenhouse Labs product launches, project updates, release notes, demos, studio writing, and responses to your questions</li>
             <li><strong>Improvement:</strong> To improve our website, services, and user experience</li>
             <li><strong>Legal Compliance:</strong> To comply with applicable laws and protect our rights</li>
           </ul>

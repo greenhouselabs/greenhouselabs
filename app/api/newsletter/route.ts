@@ -4,7 +4,7 @@ const SHEETS_WEBHOOK_URL = process.env.GOOGLE_SHEETS_WEBHOOK_URL
 const MAX_BODY_SIZE = 10_000
 const BUTTONDOWN_TIMEOUT_MS = 8_000
 const SHEETS_WEBHOOK_TIMEOUT_MS = 8_000
-const DEFAULT_TAG = "website"
+const DEFAULT_TAG = "greenhouse-updates"
 const NEWSLETTER_SHEET = "Email Capture"
 
 function cleanString(value: unknown, maxLength = 254) {
@@ -149,7 +149,8 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json({
-      message: "You're in! Check your inbox for a confirmation.",
+      message:
+        "You're on the Greenhouse Labs updates list! Check your inbox for a confirmation.",
     })
   } catch (error) {
     console.error("Newsletter error:", error)
